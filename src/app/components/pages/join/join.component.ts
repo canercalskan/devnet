@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import countries from '../../../../assets/json/countries.json';
 
 @Component({
     selector : 'join',
@@ -7,5 +8,16 @@ import { Component } from "@angular/core";
 })
 
 export class JoinComponent {
-    constructor(){}
+    countries  = countries.countries
+    countryNames : string[] = []
+    array : string[] = ['caner' , 'eren' , 'caliskan']
+    constructor(){
+        this.countries.forEach(country => {
+            this.countryNames.push(country.name);
+        })
+    }
+
+    handleSignUpForm(value : any) : void {
+        console.log(value)
+    }
 }

@@ -1,5 +1,49 @@
 <main>
     <div class="main-wrapper pb-0 mb-0">
+        <div id="terms-of-use">
+            <div id="terms-paragraph">
+                <i class="bi bi-x-lg" (click) = 'closeTerms()'></i>
+                <ul>
+                    <li>
+                        <h4>Agreement to Terms</h4>
+                        <p>By using Devnet.com, you agree to be bound by these Terms of Use, as well as our Privacy Policy. If you do not agree with any of these terms, please do not use our platform.</p>
+                    </li>
+                    <li>
+                        <h4>Eligibility</h4>
+                        <p>To use Devnet.com, you must be at least 18 years of age. If you are under 18, you may use our platform only with the consent and supervision of a parent or legal guardian who agrees to be bound by these Terms of Use.</p>
+                    </li>
+                    <li>
+                        <h4>User Conduct</h4>
+                        <p>Devnet.com is a community of developers who share ideas, discuss industry trends, and connect with one another. We ask that all users of our platform behave in a professional and respectful manner. You may not use our platform to engage in any of the following activities:</p>
+                        <ul class="ms-3">
+                            <li>1. Harassment, bullying, or discrimination against any individual or group</li>
+                            <li>2. Posting or sharing content that is obscene, offensive, or defamatory</li>
+                            <li>3. Impersonating another person or entity</li>
+                            <li>4. Engaging in illegal activities or promoting illegal activities</li>
+                            <li>5. Attempting to disrupt the functioning of our platform or its services</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>User Content</h4>
+                        <p>Devnet.com is a platform for user-generated content. You retain ownership of any content you post or upload to our platform, but you grant us a non-exclusive, royalty-free, perpetual, and irrevocable license to use, display, modify, and distribute your content on our platform.
+                            <br>
+                            You are solely responsible for the content you post or upload to our platform, and you agree to indemnify and hold us harmless from any claims arising from your content.</p>
+                    </li>
+                    <li>
+                        <h4>Intellectual Property</h4>
+                        <p>Devnet.com respects the intellectual property rights of others, and we ask our users to do the same. If you believe that your intellectual property rights have been violated on our platform, please contact us immediately.</p>
+                    </li>
+                    <li>
+                        <h4>Termination</h4>
+                        <p>We reserve the right to terminate your use of Devnet.com at any time, for any reason, without notice or liability.</p>
+                    </li>
+                    <li>
+                        <h4>Disclaimer of Warranties</h4>
+                        <p>Devnet.com is provided "as is" and without warranty of any kind, either express or implied. We make no warranty that our platform will be uninterrupted, error-free, or free from viruses or other harmful components.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="timeline-wrapper overflow-hidden">
             <div class="timeline-header">
                 <div class="container-fluid p-0">
@@ -17,19 +61,19 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="login-area">
+                            <form #loginForm = 'ngForm' class="login-area" (submit)="handleLoginForm(loginForm.value); loginForm.reset()" ngNativeValidate>
                                 <div class="row align-items-center">
                                     <div class="col-12 col-sm">
-                                        <input type="text" placeholder="Email or Userame" class="single-field">
+                                        <input type="text" placeholder="Email or Userame" class="single-field" name="email" ngModel required>
                                     </div>
                                     <div class="col-12 col-sm">
-                                        <input type="password" placeholder="Password" class="single-field">
+                                        <input type="password" placeholder="Password" class="single-field" name="password" ngModel required>
                                     </div>
                                     <div class="col-12 col-sm-auto">
-                                        <button class="login-btn">Login</button>
+                                        <button type="submit" class="login-btn">Login</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -69,11 +113,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <select class="nice-select" name="age" ngModel>
-                                                    <option value="">Age</option>
-                                                    <option value="more">18+</option>
-                                                    <option value="less">18-</option>
-                                                </select>
+                                                <input type="number" class="single-field" name="age" placeholder="Age" ngModel required>
                                             </div>
                                             <div class="col-12">
                                                 <select class="nice-select" name="country" ngModel>
@@ -84,7 +124,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-12">
-                                                <h6 class="terms-condition"><input type="checkbox" class="d-inline" required> I have read & accepted the <a href="#">terms of use</a></h6>
+                                                <p class="text-danger" *ngIf="selectionError">Please select valid options.</p>
+                                                <h6 class="terms-condition"><input type="checkbox" class="d-inline" required> I have read & accepted the <a (click) = 'openTerms()'>terms of use</a></h6>
                                                 <button class="submit-btn">Create Account</button>
                                             </div>
                                         </div>

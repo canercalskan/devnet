@@ -10,6 +10,44 @@
   /*
    * Scrollbar rail styles
    */
+
+   #terms-of-use {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.279);
+    padding: .7rem;
+   }
+
+   #terms-of-use #terms-paragraph {
+    background-color: #fffffff4;
+    border-radius: 8px;
+    padding : 1rem 2rem 1rem 2rem;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+   #terms-of-use #terms-paragraph i {
+    color: #DC4734;
+   }
+
+   #terms-of-use #terms-paragraph i:hover {
+    cursor: pointer;
+   }
+
+  ul li h4 {
+    color: #DC4734;
+   }
+
+   li {
+    margin: 1rem;
+   }
+
   .ps__rail-x {
     display: none;
     opacity: 0;
@@ -239,6 +277,7 @@ a:hover,
 a:focus {
     outline: none;
     text-decoration: none;
+    cursor: pointer;
 }
 
 p {
@@ -1638,6 +1677,18 @@ only screen and (max-width: 767.98px) {
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     .ps {
       overflow: auto !important;
+    }
+  }
+
+  @media screen and (max-width : 800px) {
+    #terms-of-use #terms-paragraph  {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #terms-of-use #terms-paragraph ul {
+        height: 50%;
     }
   }
   

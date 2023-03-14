@@ -24,7 +24,7 @@ export class JoinComponent {
             this.selectionError = true;
         }
         else {
-
+            console.log(value);
         }
     }
 

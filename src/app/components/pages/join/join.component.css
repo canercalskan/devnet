@@ -592,12 +592,6 @@ only screen and (max-width: 767.98px) {
     transform: translateY(-50%);
 }
 
-@media only screen and (max-width: 479.98px) {
-    .share-text-box .btn-share {
-        display: none;
-    }
-}
-
 .share-text-box .btn-share:hover {
     background-color: #333333;
 }
@@ -1598,8 +1592,11 @@ only screen and (max-width: 767.98px) {
     }
 }
 
-
-
+@media only screen and (max-width: 479.98px) {
+    .share-text-box .btn-share {
+        display: none;
+    }
+}
 
 @-webkit-keyframes lg-right-end{
     0%,100%{

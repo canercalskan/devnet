@@ -54,12 +54,6 @@ img {
     transition: 0.4s;
 }
 
-.bg-img {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .btn,
 button {
     border: none;
@@ -209,70 +203,16 @@ textarea:focus {
     position: relative;
 }
 
-.container-fluid {
-    padding-right: calc(var(--bs-gutter-x) * .625);
-    padding-left: calc(var(--bs-gutter-x) * .625);
-}
-
 .row {
     --bs-gutter-x: 30px;
 }
 
-.lg-backdrop {
-    background-color: rgba(51, 51, 51, 0.9);
-}
 
-.lg-outer .lg-thumb-outer {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-/*------- short classes start -------*/
-.bg-color {
-    background-color: #f1f1f1;
-}
 
 .pt-80 {
     padding-top: 80px;
 }
 
-.mb-20 {
-    margin-bottom: 20px;
-}
-
-@media only screen and (max-width: 767.98px) {
-    .mb-20 {
-        margin-bottom: 10px;
-    }
-}
-
-.mt-20 {
-    margin-top: 20px;
-}
-
-@media only screen and (max-width: 767.98px) {
-    .mt-20 {
-        margin-top: 10px;
-    }
-}
-
-.mt--20 {
-    margin-top: -20px;
-}
-
-.mt--30 {
-    margin-top: -30px;
-}
-
-.plr-80 {
-    padding: 0 80px;
-}
 .header-top {
     -webkit-box-shadow: 0px 1px 20px 0px rgba(85, 85, 85, 0.25);
     box-shadow: 0px 1px 20px 0px rgba(85, 85, 85, 0.25);
@@ -561,9 +501,6 @@ only screen and (max-width: 767.98px) {
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
-/*------ sticky menu style end ------*/
-/*--------- mobile header start ---------*/
-
 .mobile-header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -802,7 +739,6 @@ only screen and (max-width: 767.98px) {
     visibility: visible;
 }
 
-/*--------- mobile header end ---------*/
 .mobile-chat-box {
     left: 0;
     top: 100%;
@@ -1456,12 +1392,6 @@ only screen and (max-width: 767.98px) {
         margin: auto;
         width: 100px;
     }
-}
-
-.secondary-navigation-style .profile-picture-box {
-    -webkit-transform: translateY(calc(-50% - 17px));
-    -ms-transform: translateY(calc(-50% - 17px));
-    transform: translateY(calc(-50% - 17px));
 }
 
 .profile-picture {

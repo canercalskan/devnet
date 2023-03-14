@@ -7,11 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JoinComponent } from './components/pages/join/join.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
+import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent ,
     HomeComponent,
-    JoinComponent
+    JoinComponent,
+    FooterComponent , NavbarComponent
   ],
   imports: [
     BrowserModule,

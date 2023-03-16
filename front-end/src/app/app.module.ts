@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { JoinComponent } from './components/pages/join/join.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { NavbarComponent } from './components/layouts/navbar/navbar.component';
+import { JoinService } from './services/join.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent ,
@@ -21,7 +23,9 @@ import { NavbarComponent } from './components/layouts/navbar/navbar.component';
     AppRoutingModule,
     NgbModule,
     FormsModule, 
-    CommonModule
+    CommonModule ,
+    HttpClientModule, 
+    JoinService,
   ],
   providers: [],
   bootstrap: [AppComponent]

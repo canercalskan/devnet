@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  registerPath : 'http://91.107.194.181:5435/api/Auth/register',
+  loginPath : 'http://91.107.194.181:5435/api/Auth/login',
 };
 
 /*

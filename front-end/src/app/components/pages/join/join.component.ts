@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { UserModel } from "src/app/models/user.model";
 import countries from '../../../../assets/json/countries.json';
-
+import { JoinService } from "src/app/services/join.service";
 @Component({
     selector : 'join',
     templateUrl : './join.component.html',
@@ -13,23 +13,24 @@ export class JoinComponent {
     countryNames : string[] = []
     array : string[] = ['caner' , 'eren' , 'caliskan'];
     selectionError! : boolean;
-    constructor(){
+    constructor(private joinService : JoinService){
         this.countries.forEach(country => {
             this.countryNames.push(country.name);
         })
     }
 
-    handleSignUpForm(value : UserModel) : void {
-        if(value.country === "" || value.gender === "") {
+    handleSignUpForm(newUser : UserModel) : void {
+        if(newUser.country === "" || newUser.gender === "") {
             this.selectionError = true;
+            return;
         }
         else {
-            console.log(value);
+            this.joinService.register(newUser);
         }
     }
 
-    handleLoginForm(value:any) : void {
-        console.log(value)
+    handleLoginForm(value : {email : string, password : string}) : void {
+        this.joinService.login(value.email , value.password)
     }
     
     openTerms() : void {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Developers-Platform\\Developers-Platform\\Developers-Platform.csproj": {}
+    "C:\\Projects\\devnet\\back-end\\Developers-Platform\\Developers-Platform.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Developers-Platform\\Developers-Platform\\Developers-Platform.csproj": {
+    "C:\\Projects\\devnet\\back-end\\Developers-Platform\\Developers-Platform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Developers-Platform\\Developers-Platform\\Developers-Platform.csproj",
+        "projectUniqueName": "C:\\Projects\\devnet\\back-end\\Developers-Platform\\Developers-Platform.csproj",
         "projectName": "Developers-Platform",
-        "projectPath": "C:\\Projects\\Developers-Platform\\Developers-Platform\\Developers-Platform.csproj",
+        "projectPath": "C:\\Projects\\devnet\\back-end\\Developers-Platform\\Developers-Platform.csproj",
         "packagesPath": "C:\\Users\\EmreTek\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Developers-Platform\\Developers-Platform\\obj\\",
+        "outputPath": "C:\\Projects\\devnet\\back-end\\Developers-Platform\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EmreTek\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,6 +59,14 @@
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.17.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
+              "target": "Package",
+              "version": "[1.1.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

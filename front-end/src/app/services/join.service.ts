@@ -33,6 +33,7 @@ export class JoinService {
             }
             else {
                 Swal.close();
+                console.log(response);
                 Swal.fire('Error' , 'An error occured, please contact us' , 'error').then(() => {
                     return;
                 })

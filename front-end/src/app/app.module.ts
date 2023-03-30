@@ -11,6 +11,7 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { JoinService } from './services/join.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent ,
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule ,
     HttpClientModule, 
     JoinService,
+    AuthGuard
   ],
   providers: [],
   bootstrap: [AppComponent]

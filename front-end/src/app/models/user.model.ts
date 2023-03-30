@@ -6,4 +6,5 @@ export interface UserModel {
     gender : string;
     age : number;
     country : string;
+    friends : UserModel[];
 }

@@ -821,17 +821,17 @@ only screen and (max-width: 767.98px) {
 
 .share-text-box {
     position: relative;
-    padding-left: 15px;
 }
 
 .share-text-box .share-text-field {
     width: 100%;
     border: none;
     display: block;
-    height: 44px;
+    min-height: 44px;
+    max-height: max-content;
     padding: 13px 90px 13px 20px;
     position: relative;
-    border-radius: 50px;
+    border-radius: 5px;
     overflow: hidden;
     background-color: #f1f1f1;
     -webkit-box-shadow: inset 0px 1px 10px 0px rgba(85, 85, 85, 0.2);
@@ -842,22 +842,58 @@ only screen and (max-width: 767.98px) {
 }
 
 .share-text-box .btn-share {
-    top: 50%;
-    right: 3px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-    padding: 11px 25px;
-    margin-right: 2px;
-    border-radius: 40px;
+    float: right;
     background-color: #dc4734;
-    position: absolute;
-    text-transform: uppercase;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    color: #ffff;
+    padding: 5px 10px;
+    border-radius: 50px;
+    /* margin-top: 0px; */
 }
+
+.post-actions i {
+    margin: 5px;
+}
+
+.post-actions i:hover {
+    cursor: pointer;
+}
+
+.post-actions i:hover {
+    color: #dc4734;
+}
+
+input[type = "file"] {
+    display: none;
+}
+
+.poll-field {
+    border: .5px solid rgba(128, 128, 128, 0.331);
+}
+
+.poll-field input {
+    display: block;
+    width: 95%;
+    margin: .5rem;
+    border: .5px solid rgba(128, 128, 128, 0.331);
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+.poll-field hr {
+    color: rgba(128, 128, 128, 0.771);
+}
+
+#remove-poll-button , .remove-image-button{
+    width: 100%;
+    text-align: center;
+    color: red;
+    padding: 1rem;
+}
+
+#remove-poll-button:hover , .remove-image-button:hover{
+    background-color: rgba(229, 95, 95, 0.275);
+}
+
 
 @media only screen and (max-width: 479.98px) {
     .share-text-box .btn-share {
@@ -866,7 +902,7 @@ only screen and (max-width: 767.98px) {
 }
 
 .share-text-box .btn-share:hover {
-    background-color: #333333;
+    background-color: #430202;
 }
 
 .modal-dialog {

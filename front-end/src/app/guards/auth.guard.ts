@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AuthGuard implements CanActivate {
     constructor(private http : HttpClient) { }
+    
     // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean>{
     //     return this.checkAuth()
     //   }
@@ -25,7 +26,7 @@ export class AuthGuard implements CanActivate {
     //   }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        return false;
+        return true;
     }
 }
 
@@ -49,6 +50,6 @@ export class JoinGuard implements CanActivate {
     //         }
     //     }))
     //   }
-        return false;
+        return true;
     }
 }

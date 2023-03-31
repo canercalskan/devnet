@@ -53,6 +53,7 @@ export class JoinService {
           })
 
           this.http.post(this.loginPath , {email , password} , {responseType : 'text'}).subscribe(r => {
+            //response will return an JWT token, save it as a cookie.
             if(r === 'Wrong Password.') {
                 Swal.close();
                 Swal.fire('Error' , 'Your password is wrong.' , 'error');

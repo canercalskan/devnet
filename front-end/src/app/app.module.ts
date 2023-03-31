@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { JoinService } from './services/join.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
+import { UserService } from './services/user.service';
 @NgModule({
   declarations: [
     AppComponent ,
@@ -27,7 +28,8 @@ import { AuthGuard } from './guards/auth.guard';
     CommonModule ,
     HttpClientModule, 
     JoinService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   providers: [],
   bootstrap: [AppComponent]

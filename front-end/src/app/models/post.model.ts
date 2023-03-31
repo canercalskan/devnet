@@ -7,5 +7,6 @@ export interface PostModel {
     content : string,
     likes : number,
     comments : CommentModel[],
-    contentImage : File
+    contentImage : File,
+    contentImageURL : string
 }

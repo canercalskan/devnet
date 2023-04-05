@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { UserModel } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { setCookie } from 'typescript-cookie';
+
 @Injectable({providedIn: 'root'})
 
 @NgModule()
@@ -53,7 +55,6 @@ export class JoinService {
           })
 
           this.http.post(this.loginPath , {email , password} , {responseType : 'text'}).subscribe(r => {
-            //response will return an JWT token, save it as a cookie.
             if(r === 'Wrong Password.') {
                 Swal.close();
                 Swal.fire('Error' , 'Your password is wrong.' , 'error');
@@ -63,12 +64,10 @@ export class JoinService {
                 Swal.fire('Error' , 'No such user' , 'error');
             }
             else {
+                setCookie('user-authenticator-token' , r , {expires : 365});
                 Swal.close();
                 this.router.navigate(['/home']);
             }
           })
-
-    }
-
-    
+    }    
 }

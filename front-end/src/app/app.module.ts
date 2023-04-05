@@ -11,14 +11,16 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { JoinService } from './services/join.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './guards/auth.guard';
+import { MainGuard, JoinGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent ,
     HomeComponent,
     JoinComponent,
-    FooterComponent , NavbarComponent
+    FooterComponent , NavbarComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { UserService } from './services/user.service';
     CommonModule ,
     HttpClientModule, 
     JoinService,
-    AuthGuard,
+    MainGuard, JoinGuard,
     UserService
   ],
   providers: [],

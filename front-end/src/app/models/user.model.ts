@@ -1,5 +1,6 @@
 export interface UserModel {
     email : string;
+    username : string;
     first_name : string;
     last_name : string;
     password : string;
@@ -8,4 +9,5 @@ export interface UserModel {
     country : string;
     friends : UserModel[];
     status : string;
+    profile_picture : string;
 }

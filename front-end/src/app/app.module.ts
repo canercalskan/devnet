@@ -14,13 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainGuard, JoinGuard } from './guards/auth.guard';
 import { UserService } from './services/user.service';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import { ProfileSidebar } from './components/layouts/profile-sidebar/profile-sidebar.component';
 @NgModule({
   declarations: [
     AppComponent ,
     HomeComponent,
     JoinComponent,
     FooterComponent , NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent , 
+    ProfileComponent , ProfileSidebar
   ],
   imports: [
     BrowserModule,

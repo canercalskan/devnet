@@ -11,3 +11,8 @@
 .not-found-container i {
     font-size: 10rem;
 }
+
+img {
+    width: 100px;
+    height: 100px;
+}

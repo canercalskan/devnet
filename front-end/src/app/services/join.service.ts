@@ -5,6 +5,7 @@ import { UserModel } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { setCookie } from 'typescript-cookie';
+import slugify from 'slugify';
 
 @Injectable({providedIn: 'root'})
 
@@ -26,8 +27,13 @@ export class JoinService {
                 Swal.showLoading()
             }
           })
+          newUser.username = slugify(newUser.first_name + ' ' + newUser.last_name , {lower : true, replacement : '_'})
+          
+          //check the 'usernames' table if username is available; if not, add a random number at the end until it is unique.
+
           this.http.post(this.registerPath , newUser , {responseType : 'text'}).subscribe(response => {
             if(response === 'Success.') {
+                //if response is success, push the username into the 'usernames' table, we'll control every new user's username if it has already been taken.
                 Swal.close();
                 Swal.fire('Success!' , 'You can login and use your account, enjoy!' , 'success').then(() => {
                     location.reload();
@@ -35,7 +41,6 @@ export class JoinService {
             }
             else {
                 Swal.close();
-                console.log(response);
                 Swal.fire('Error' , 'An error occured, please contact us' , 'error').then(() => {
                     return;
                 })

@@ -1,15 +1,21 @@
 ﻿using Developers_Platform.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Developers_Platform.DataAccess
 {
-    public class DatabaseContext:DbContext
+    public class DatabaseContext : IdentityDbContext<User>
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DatabaseContext(DbContextOptions options) : base(options) { }
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            optionsBuilder.UseNpgsql(@"Server=91.107.194.181;Port=5432;Database=postgres;User Id=postgres;Password=Ukebu1riz_gl;");
+            base.OnModelCreating(builder);
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "Member", NormalizedName = "MEMBER" },
+                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" }
+            );
         }
-        public DbSet<User> Users { get; set; }
     }
 }

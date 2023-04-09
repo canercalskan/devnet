@@ -1,5 +1,4 @@
-using Developers_Platform.Business.AuthService;
-using Developers_Platform.DataAccess;
+using Developers_Platform.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,14 +8,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DatabaseContext>();
-builder.Services.AddSingleton<IAuthService, AuthService>();
+builder.Services.AddCustomServices();
 builder.Services.AddCors(options =>
                options.AddDefaultPolicy(builder =>
                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 
 var app = builder.Build();
-
+app.SeedDb();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

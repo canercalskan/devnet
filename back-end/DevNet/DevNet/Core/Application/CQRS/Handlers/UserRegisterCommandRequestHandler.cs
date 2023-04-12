@@ -19,7 +19,7 @@ namespace DevNet.Core.Application.CQRS.Handlers
         {
             User user = new()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,

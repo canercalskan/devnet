@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -70,7 +71,8 @@ namespace DevNet.Migrations
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     AuthorFirstName = table.Column<string>(type: "text", nullable: true),
                     AuthorLastName = table.Column<string>(type: "text", nullable: true),
-                    AuthorId = table.Column<string>(type: "text", nullable: true)
+                    AuthorId = table.Column<string>(type: "text", nullable: true),
+                    Photos = table.Column<List<string>>(type: "text[]", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -234,32 +236,13 @@ namespace DevNet.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Photo",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
-                    PublicId = table.Column<string>(type: "text", nullable: true),
-                    PostId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Photo", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Photo_Posts_PostId",
-                        column: x => x.PostId,
-                        principalTable: "Posts",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3f9ce7b9-3440-452b-9c9b-afdc7dd46660", null, "Admin", "ADMIN" },
-                    { "b162862f-49cb-4468-a552-5537f3c0d2c2", null, "Member", "MEMBER" }
+                    { "58358cf8-330f-4b8a-81e3-4764dfc36a27", null, "Admin", "ADMIN" },
+                    { "838fde61-3558-4d16-a22c-176f1d0adb1f", null, "Member", "MEMBER" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -318,11 +301,6 @@ namespace DevNet.Migrations
                 name: "IX_Like_UserId",
                 table: "Like",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Photo_PostId",
-                table: "Photo",
-                column: "PostId");
         }
 
         /// <inheritdoc />
@@ -348,9 +326,6 @@ namespace DevNet.Migrations
 
             migrationBuilder.DropTable(
                 name: "Like");
-
-            migrationBuilder.DropTable(
-                name: "Photo");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

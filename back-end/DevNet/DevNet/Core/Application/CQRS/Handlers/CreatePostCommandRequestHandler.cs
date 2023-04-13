@@ -21,17 +21,11 @@ namespace DevNet.Core.Application.CQRS.Handlers
         public async Task<Unit> Handle(CreatePostCommandRequest request, CancellationToken cancellationToken)
         {
             var Author = await userRepository.GetByFilterAsync(x => x.Email == request.AuthorMail);
-            var uploadedPhotos = new List<Photo>();
+            var uploadedPhotos = new List<string>();
             foreach (var photo in request.UploadPhotos)
             {            
-                    var photoResult = await photoService.AddPhotoAsync(photo);
-                    var newPhoto = new Photo
-                    {
-                        Id = Guid.NewGuid(),
-                        ImageUrl = photoResult.SecureUrl.AbsoluteUri,
-                        PublicId = photoResult.PublicId
-                    };              
-                uploadedPhotos.Add(newPhoto);
+                    var photoResult = await photoService.AddPhotoAsync(photo);                            
+                    uploadedPhotos.Add(photoResult.SecureUrl.AbsoluteUri);
             }
             Post post = new()
             {

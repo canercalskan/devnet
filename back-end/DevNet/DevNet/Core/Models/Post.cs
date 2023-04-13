@@ -14,6 +14,6 @@ namespace DevNet.Core.Models
         public string AuthorId { get; set; }
         public ICollection<Like> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }
-        public ICollection<Photo> Photos { get; set; }
+        public List <string> Photos { get; set; }
     }
 }

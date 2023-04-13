@@ -3,9 +3,12 @@ using DevNet.Core.Application.CQRS.Commands;
 using DevNet.Core.Application.CQRS.Handlers;
 using DevNet.Core.Application.Interfaces;
 using DevNet.Core.Application.Repositories;
+using DevNet.Core.Models;
 using DevNet.JWTTokenService;
+using DevNet.PhotoService;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -32,18 +35,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 
 });
+
+builder.Services.AddCors(options =>
+               options.AddDefaultPolicy(builder =>
+               builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
 builder.Services.AddDbContext<DatabaseContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString"));
 
 });
+
 builder.Services.AddSingleton<ITokenService, GenerateJwtToken>();
+
+builder.Services.AddSingleton<IPhotoService, AddPhotoService>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -52,7 +61,7 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "jwtToken_Auth_API",
+        Title = "DevNet.API",
         Version = "v1"
     });
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -90,6 +99,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 

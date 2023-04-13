@@ -1,4 +1,5 @@
 ﻿using DevNet.Core.Application.CQRS.Commands;
+using DevNet.Core.Application.CQRS.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +25,13 @@ namespace DevNet.Controllers
             await mediator.Send(request);
             return Ok();
         }
+        [AllowAnonymous]
+        [HttpPost("GetAllPosts")]
+        public async Task<IActionResult> GetAllPosts()
+        {
+            var allPosts = await mediator.Send(new GetAllPostsQueryRequest());
+            return Ok(allPosts);
+        }
+
     }
 }

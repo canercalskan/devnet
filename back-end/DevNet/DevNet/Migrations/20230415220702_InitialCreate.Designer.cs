@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DevNet.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230413205142_InitialCreate")]
+    [Migration("20230415220702_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,8 +47,6 @@ namespace DevNet.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -222,13 +220,13 @@ namespace DevNet.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "838fde61-3558-4d16-a22c-176f1d0adb1f",
+                            Id = "71fa0d16-b5bb-4ed1-90e3-2aeb87ed8916",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "58358cf8-330f-4b8a-81e3-4764dfc36a27",
+                            Id = "8239ba6f-9689-4d4c-bf9b-79251f47a9a7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -342,19 +340,11 @@ namespace DevNet.Migrations
 
             modelBuilder.Entity("DevNet.Core.Models.Comment", b =>
                 {
-                    b.HasOne("DevNet.Core.Models.Post", "Post")
+                    b.HasOne("DevNet.Core.Models.Post", null)
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DevNet.Core.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Post");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DevNet.Core.Models.Like", b =>

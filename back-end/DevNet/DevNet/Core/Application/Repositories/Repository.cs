@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System;
 using Microsoft.EntityFrameworkCore;
 using DevNet.Context;
+using DevNet.Core.Models;
 
 namespace DevNet.Core.Application.Repositories
 {
@@ -49,6 +50,14 @@ namespace DevNet.Core.Application.Repositories
         {
             dbset.Update(entity);
             await _context.SaveChangesAsync();
+        }
+        public async Task<Post> GetPostWithComments(Guid postId)
+        {
+            return await _context.Posts.Include(p => p.Comments).FirstOrDefaultAsync(x=>x.Id == postId);
+        }
+        public async Task<List<Post>> GetAllPostsWithCommentsAsync()
+        {
+            return await _context.Posts.Include(p => p.Comments).ToListAsync();
         }
     }
 }

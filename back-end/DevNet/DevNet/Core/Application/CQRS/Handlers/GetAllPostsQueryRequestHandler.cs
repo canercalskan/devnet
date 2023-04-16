@@ -19,7 +19,7 @@ namespace DevNet.Core.Application.CQRS.Handlers
         }
         public async Task <List<PostDto>> Handle(GetAllPostsQueryRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<List<PostDto>>(await this.postRepository.GetAllAsync());                       
+            return _mapper.Map<List<PostDto>>(await this.postRepository.GetAllPostsWithCommentsAsync());                       
         }
     }
 }

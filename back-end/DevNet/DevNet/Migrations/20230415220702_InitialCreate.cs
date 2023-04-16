@@ -199,11 +199,6 @@ namespace DevNet.Migrations
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
@@ -241,8 +236,8 @@ namespace DevNet.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "58358cf8-330f-4b8a-81e3-4764dfc36a27", null, "Admin", "ADMIN" },
-                    { "838fde61-3558-4d16-a22c-176f1d0adb1f", null, "Member", "MEMBER" }
+                    { "71fa0d16-b5bb-4ed1-90e3-2aeb87ed8916", null, "Member", "MEMBER" },
+                    { "8239ba6f-9689-4d4c-bf9b-79251f47a9a7", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -286,11 +281,6 @@ namespace DevNet.Migrations
                 name: "IX_Comments_PostId",
                 table: "Comments",
                 column: "PostId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_UserId",
-                table: "Comments",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Like_PostId",

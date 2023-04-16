@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using DevNet.Core.Models;
+using System.Linq.Expressions;
 
 namespace DevNet.Core.Application.Interfaces
 {
@@ -10,5 +11,7 @@ namespace DevNet.Core.Application.Interfaces
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
+        Task<Post> GetPostWithComments(Guid postId);
+        Task<List<Post>> GetAllPostsWithCommentsAsync();
     }
 }

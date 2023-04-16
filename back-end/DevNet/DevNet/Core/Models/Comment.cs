@@ -1,13 +1,16 @@
-﻿namespace DevNet.Core.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DevNet.Core.Models
 {
     public class Comment
     {
+        [Key]
         public Guid Id { get; set; }
         public string Text { get; set; }
         public DateTime Time { get; set; } = DateTime.UtcNow;
         public string UserId { get; set; }
-        public User User { get; set; }
-        public Guid PostId { get; set; }
-        public Post Post { get; set; }
+        [ForeignKey("PostId")]
+        public Guid PostId { get; set; } 
     }
 }

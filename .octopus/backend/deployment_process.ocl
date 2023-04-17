@@ -1,7 +1,7 @@
 step "github-create-release" {
     name = "GitHub - Create Release"
     properties = {
-        Octopus.Action.TargetRoles = "app-server"
+        Octopus.Action.TargetRoles = "app-dev"
     }
 
     action {

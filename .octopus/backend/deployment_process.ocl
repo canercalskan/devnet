@@ -31,3 +31,19 @@ step "run-a-script" {
         }
     }
 }
+
+step "git-pull-https" {
+    name = "Git - Pull (HTTPS)"
+
+    action {
+        properties = {
+            GitHttpsBranchName = "master"
+            GitHttpsUrl = "https://github.com/canercalskan/devnet.git"
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Template.Id = "ActionTemplates-2"
+            Octopus.Action.Template.Version = "8"
+            Password = "#{apikeygithub}"
+            Username = "hetznerhesap18@gmail.com"
+        }
+    }
+}

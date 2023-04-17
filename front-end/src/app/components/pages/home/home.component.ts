@@ -1,36 +1,58 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PostModel } from "src/app/models/post.model";
 import { UserService } from "src/app/services/user.service";
 import Swal from "sweetalert2";
+import { HttpClient } from "@angular/common/http";
 @Component({
     selector : 'home',
     templateUrl : './home.component.html',
     styleUrls : ['./home.component.css']
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit{
     pollClicked : boolean = false;
     imageSelected : boolean = false;
-    selectedImageBase64! : string;
-    constructor (private UserService : UserService) {}
+    displayImage! : File;
+    UploadImages : File[] = [];
+    // postImageDatas : Uint8Array[] = [];
+    constructor (private UserService : UserService , private http : HttpClient) {}
 
+    ngOnInit(): void {
+        this.http.post('http://91.107.194.181:5435/api/Post/GetAllPosts' , {}).subscribe(response => {
+            console.log(response)
+        })
+    }
     handleImageSelection(event : any) : void {
-        //! preview the image after selection and read its file name
+        this.displayImage = event.target.files[0];
+        this.UploadImages = event.target.files;
         this.imageSelected = true;
-        const file : File = event.target.files[0]
-        if (file) {
+        if (this.displayImage) {
             const reader = new FileReader();
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(this.displayImage);
             reader.addEventListener('load', function(event) {
               document.getElementById('previewImage')!.setAttribute('src', event.target!.result!.toString());
               document.getElementById('previewImage')!.style.display = 'block';
             });
 
-            this.UserService.encodeImageFileAsBase64(file).then(r => {
-                this.selectedImageBase64 = r;
-            }).catch(error => {
-                Swal.fire('Error' , 'Something went wrong while we process your image, please try again and if the problem still arises contact us.' , 'error');
-            })
+        // for(let i = 0; i < event.target.files.length; i++) {
+        //     const file = event.target.files[i];
+        //     const reader = new FileReader();
+        //     reader.readAsArrayBuffer(file);
+        //     reader.onload = () => {
+        //         const imageFile = new Uint8Array(reader.result as ArrayBuffer);
+        //         this.postImageDatas.push(imageFile);
+        //     }
+        // }
+
+        // ! image'ları base64 e çevir, postImages arrayine at.
+        //   for(let i = 0; i < event.target.files.length; i++) {
+        //     const reader = new FileReader();
+        //     reader.onload = (event : any) => {
+        //         this.postImages.push(event.target.result);
+        //     }
+        //     reader.readAsDataURL(event.target.files[i])
+        //   }
+        //   console.log(this.postImages);
         }
     }
 
@@ -47,8 +69,6 @@ export class HomeComponent {
     }
 
     handlePostSubmission(data : PostModel) : void {
-        //data.author = ?
-        //data.contentImageURL = ?
         Swal.fire({
             title : 'Uploading',
             text : 'Please wait a while..',
@@ -62,8 +82,13 @@ export class HomeComponent {
             data.question1_results = 0;
             data.question2_results = 0;
         }
-        data.contentImage = this.selectedImageBase64;
-        this.UserService.pushNewPost(data);
+
+        const sendData = {
+            Title : 'angular test',
+            Text : data.Text,
+            UploadImages : this.UploadImages
+        }
+        this.UserService.pushNewPost(sendData);
         this.imageSelected = false;
     }
 

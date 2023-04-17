@@ -5,10 +5,11 @@ export class PostModel {
     postID! : string;
     author! : UserModel;
     date! : string;
-    content! : string;
+    Title! : string;
+    Text! : string;
     likes! : number;
     comments! : CommentModel[];
-    contentImage! : string;
+    UploadImages : File[] = [];
     question1!: string | null;
     question2! : string | null;
     question1_results! : number | null

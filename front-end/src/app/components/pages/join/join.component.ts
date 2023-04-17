@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserModel } from "src/app/models/user.model";
 import countries from '../../../../assets/json/countries.json';
 import { JoinService } from "src/app/services/join.service";
+import { HttpClient } from "@angular/common/http";
 @Component({
     selector : 'join',
     templateUrl : './join.component.html',
@@ -13,7 +14,7 @@ export class JoinComponent {
     countryNames : string[] = []
     array : string[] = ['caner' , 'eren' , 'caliskan'];
     selectionError! : boolean;
-    constructor(private joinService : JoinService){
+    constructor(private joinService : JoinService , private http : HttpClient){
         this.countries.forEach(country => {
             this.countryNames.push(country.name);
         })

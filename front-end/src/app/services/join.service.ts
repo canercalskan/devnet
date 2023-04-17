@@ -1,11 +1,12 @@
 import { Injectable, NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { UserModel } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { setCookie } from 'typescript-cookie';
+import { setCookie , getCookie} from 'typescript-cookie';
 import slugify from 'slugify';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
@@ -27,24 +28,23 @@ export class JoinService {
                 Swal.showLoading()
             }
           })
-          newUser.username = slugify(newUser.first_name + ' ' + newUser.last_name , {lower : true, replacement : '_'})
           
-          //check the 'usernames' table if username is available; if not, add a random number at the end until it is unique.
+          this.http.post(this.registerPath , newUser , {observe : 'response'}).subscribe(response => {
 
-          this.http.post(this.registerPath , newUser , {responseType : 'text'}).subscribe(response => {
-            if(response === 'Success.') {
-                //if response is success, push the username into the 'usernames' table, we'll control every new user's username if it has already been taken.
-                Swal.close();
-                Swal.fire('Success!' , 'You can login and use your account, enjoy!' , 'success').then(() => {
-                    location.reload();
-                })
-            }
-            else {
-                Swal.close();
-                Swal.fire('Error' , 'An error occured, please contact us' , 'error').then(() => {
-                    return;
-                })
-            }
+            // if(response === 'Success.') {
+            //     Swal.close();
+            //     Swal.fire('Success!' , 'You can login and use your account, enjoy!' , 'success').then(() => {
+            //         location.reload();
+            //     })
+            // }
+
+            // else {
+            //     Swal.close();
+            //     Swal.fire('Error' , 'An error occured, please contact us' , 'error').then(() => {
+            //         return;
+            //     })
+            // }
+            console.log(response);
           })
     }
 
@@ -58,21 +58,15 @@ export class JoinService {
                 Swal.showLoading()
             }
           })
-
-          this.http.post(this.loginPath , {email , password} , {responseType : 'text'}).subscribe(r => {
-            if(r === 'Wrong Password.') {
-                Swal.close();
-                Swal.fire('Error' , 'Your password is wrong.' , 'error');
-            }
-            else if(r === 'User not found.'){
-                Swal.close();
-                Swal.fire('Error' , 'No such user' , 'error');
-            }
-            else {
-                setCookie('user-authenticator-token' , r , {expires : 365});
-                Swal.close();
-                this.router.navigate(['/home']);
-            }
-          })
+        this.http.post(this.loginPath , {email , password}).pipe(
+            catchError((error : HttpErrorResponse) => {
+                Swal.fire('Error','Invalid username or password','error');
+                return throwError(() => {description : 'invalid credentials'});
+            })
+        ).subscribe((r : any) => {
+            setCookie('user-authenticator-token' , r.token);
+            Swal.close();
+            this.router.navigate(['./home']);
+        })
     }    
 }

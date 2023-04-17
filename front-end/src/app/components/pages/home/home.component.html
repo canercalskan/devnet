@@ -120,7 +120,7 @@
 
                                 <div class="share-content-box w-100 ">
                                     <form #newPostForm = 'ngForm' (submit) = 'handlePostSubmission(newPostForm.value); newPostForm.reset()' class="share-text-box" ngNativeValidate>
-                                            <textarea name="content" ngModel class="share-text-field" aria-disabled="true" placeholder="Say Something" data-bs-toggle="modal" data-bs-target="#textbox" required></textarea>
+                                            <textarea name="Text" ngModel class="share-text-field" aria-disabled="true" placeholder="Say Something" data-bs-toggle="modal" data-bs-target="#textbox" required></textarea>
                                             <img id="previewImage" src="#" alt="image" accept="image/png, image/jpeg" *ngIf="imageSelected" class="mt-2">
                                             <button *ngIf="imageSelected" (click) = 'removeSelectedImage()' class="d-block remove-image-button">Remove Image</button>
                                             <div *ngIf="pollClicked" class="poll-field mt-2">

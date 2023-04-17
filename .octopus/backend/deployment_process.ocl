@@ -1,20 +1,16 @@
 step "github-create-release" {
     name = "GitHub - Create Release"
-    properties = {
-        Octopus.Action.TargetRoles = "app-dev"
-    }
 
     action {
         properties = {
             commitId = "master"
             draft = "false"
-            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.RunOnServer = "true"
             Octopus.Action.Template.Id = "ActionTemplates-1"
             Octopus.Action.Template.Version = "5"
             preRelease = "false"
             releaseNotes = "#{Octopus.Release.Notes}"
             versionNumber = "#{Octopus.Release.Number}"
         }
-        worker_pool_variable = ""
     }
 }

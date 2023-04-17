@@ -5,6 +5,9 @@ step "github-create-release" {
         properties = {
             commitId = "master"
             draft = "false"
+            gitHubApiKey = "#{apikeygithub}"
+            gitHubRepository = "devnet"
+            gitHubUsername = "canercalskan"
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Template.Id = "ActionTemplates-1"
             Octopus.Action.Template.Version = "5"

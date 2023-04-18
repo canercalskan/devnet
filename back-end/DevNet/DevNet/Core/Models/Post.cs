@@ -12,6 +12,7 @@ namespace DevNet.Core.Models
         public string AuthorFirstName { get; set; }
         public string AuthorLastName { get; set; }
         public string AuthorId { get; set; }
+        public long LikesCount { get; set; }
         public ICollection<Like> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public List <string> Photos { get; set; }

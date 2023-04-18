@@ -39,6 +39,7 @@ namespace DevNet.Core.Application.CQRS.Handlers
             };
 
             await likeRepo.CreateAsync(like);
+            Post.LikesCount = Post.Likes.Count;
             Post.Likes.Add(like);
             await postRepo.UpdateAsync(Post);
 

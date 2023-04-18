@@ -90,6 +90,9 @@ namespace DevNet.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<long>("LikesCount")
+                        .HasColumnType("bigint");
+
                     b.Property<List<string>>("Photos")
                         .HasColumnType("text[]");
 
@@ -217,13 +220,13 @@ namespace DevNet.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8901f389-a93e-49f8-ace3-185ea4ef3931",
+                            Id = "be7b69b0-fff4-4c94-a3d0-71be7d13c1ac",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "4cc183da-f923-411f-bf13-f1f4955438f9",
+                            Id = "da6052bc-5022-48b4-8239-8a99ffd0ca90",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

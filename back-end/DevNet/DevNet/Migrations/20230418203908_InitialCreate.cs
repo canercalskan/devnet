@@ -72,6 +72,7 @@ namespace DevNet.Migrations
                     AuthorFirstName = table.Column<string>(type: "text", nullable: true),
                     AuthorLastName = table.Column<string>(type: "text", nullable: true),
                     AuthorId = table.Column<string>(type: "text", nullable: true),
+                    LikesCount = table.Column<long>(type: "bigint", nullable: false),
                     Photos = table.Column<List<string>>(type: "text[]", nullable: true)
                 },
                 constraints: table =>
@@ -236,8 +237,8 @@ namespace DevNet.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4cc183da-f923-411f-bf13-f1f4955438f9", null, "Admin", "ADMIN" },
-                    { "8901f389-a93e-49f8-ace3-185ea4ef3931", null, "Member", "MEMBER" }
+                    { "be7b69b0-fff4-4c94-a3d0-71be7d13c1ac", null, "Member", "MEMBER" },
+                    { "da6052bc-5022-48b4-8239-8a99ffd0ca90", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

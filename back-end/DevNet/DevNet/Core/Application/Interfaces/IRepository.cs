@@ -11,7 +11,7 @@ namespace DevNet.Core.Application.Interfaces
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
-        Task<Post> GetPostWithComments(Guid postId);
+        Task<Post> GetPost(Guid postId);
         Task<List<Post>> GetAllPostsWithCommentsAsync();
     }
 }

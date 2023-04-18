@@ -236,8 +236,8 @@ namespace DevNet.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "71fa0d16-b5bb-4ed1-90e3-2aeb87ed8916", null, "Member", "MEMBER" },
-                    { "8239ba6f-9689-4d4c-bf9b-79251f47a9a7", null, "Admin", "ADMIN" }
+                    { "4cc183da-f923-411f-bf13-f1f4955438f9", null, "Admin", "ADMIN" },
+                    { "8901f389-a93e-49f8-ace3-185ea4ef3931", null, "Member", "MEMBER" }
                 });
 
             migrationBuilder.CreateIndex(

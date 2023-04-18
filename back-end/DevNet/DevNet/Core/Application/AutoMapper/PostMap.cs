@@ -8,6 +8,7 @@ namespace DevNet.Core.Application.AutoMapper
     {
         public PostMap()
         {
+            CreateMap<Like, LikeDto>().ReverseMap();
             CreateMap<Post, PostDto>().ReverseMap();
         }
     }

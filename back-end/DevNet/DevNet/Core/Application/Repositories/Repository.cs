@@ -51,13 +51,13 @@ namespace DevNet.Core.Application.Repositories
             dbset.Update(entity);
             await _context.SaveChangesAsync();
         }
-        public async Task<Post> GetPostWithComments(Guid postId)
+        public async Task<Post> GetPost(Guid postId)
         {
-            return await _context.Posts.Include(p => p.Comments).FirstOrDefaultAsync(x=>x.Id == postId);
+            return await _context.Posts.Include(p => p.Comments).Include(p=>p.Likes).FirstOrDefaultAsync(x=>x.Id == postId);
         }
         public async Task<List<Post>> GetAllPostsWithCommentsAsync()
         {
-            return await _context.Posts.Include(p => p.Comments).ToListAsync();
+            return await _context.Posts.Include(p => p.Comments).Include(p=>p.Likes).ToListAsync();
         }
     }
 }

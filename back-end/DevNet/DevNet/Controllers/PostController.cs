@@ -33,5 +33,14 @@ namespace DevNet.Controllers
             return Ok(allPosts);
         }
 
+        [Authorize]
+        [HttpPost("LikePost")]
+        public async Task<IActionResult> LikePost(LikePostCommandRequest request)
+        {
+            request.UserMail = User.FindFirst(ClaimTypes.Email)?.Value;
+
+            await mediator.Send(request);
+            return Ok();
+        }
     }
 }

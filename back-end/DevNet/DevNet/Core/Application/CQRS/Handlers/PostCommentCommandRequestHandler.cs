@@ -22,7 +22,7 @@ namespace DevNet.Core.Application.CQRS.Handlers
 
         public async Task<Unit> Handle(PostCommentCommandRequest request, CancellationToken cancellationToken)
         {
-            Post Post = await postRepo.GetPostWithComments(request.PostId);
+            Post Post = await postRepo.GetPost(request.PostId);
             var User = await userRepo.GetByFilterAsync(x => x.Email == request.UserMail);
                        
             Comment comment = new()

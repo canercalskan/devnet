@@ -12,7 +12,7 @@ namespace DevNet.Core.Application.DTOs
         public string AuthorLastName { get; set; }
         public string AuthorId { get; set; }
         public List<string> Photos { get; set; }
+        public ICollection<LikeDto> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }
-
     }
 }

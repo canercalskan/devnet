@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Reflection;
 using System.Text;
@@ -39,7 +40,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddCors(options =>
                options.AddDefaultPolicy(builder =>
                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
-
+builder.Services.AddControllers().AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 builder.Services.AddDbContext<DatabaseContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString"));

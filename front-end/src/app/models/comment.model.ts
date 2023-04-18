@@ -1,8 +1,10 @@
 import { UserModel } from "./user.model";
 
 export interface CommentModel {
-    commentID : string,
-    author : UserModel,
-    content : string,
-    likes : number
+    Id : string,
+    UserId : UserModel,
+    PostId : string,
+    Text : string,
+    likes : number,
+    Time : string
 }

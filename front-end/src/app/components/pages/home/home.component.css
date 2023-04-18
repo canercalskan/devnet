@@ -1065,6 +1065,78 @@ input[type = "file"] {
     margin-bottom: 0;
 }
 
+.comment-form {
+    position: relative;
+    top: 1rem;
+}
+
+.comment-inner-form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-input-field {
+    border: none;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: #99999922;
+    padding: 3px;
+}
+
+.loading {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loader {
+    width: 70px;
+    text-align: center;
+  }
+  
+  .loading_inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .loader_bounce {
+    width: 10px;
+    height: 10px;
+    background-color: #DC4733;
+    border-radius: 100%;
+    display: inline-block;
+    animation: loading_delay 1.4s infinite ease-in-out both;
+    animation-delay: 0s;
+  }
+  
+  .loader_bounce_1 {
+    animation-delay: -0.32s;
+  }
+  
+  .loader_bounce_2 {
+    animation-delay: -0.16s;
+  }
+  
+  @keyframes loading_delay {
+    0%, 80%, 100% {
+        transform: scale(0);
+    } 
+    40% {
+       transform: scale(1);
+    }
+  }
+
+
 @media only screen and (max-width: 479.98px) {
     .post-meta .post-meta-like span {
         display: none;

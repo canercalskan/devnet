@@ -143,570 +143,90 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">merry watson</a></h6>
-                                    <span class="post-time">20 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy.
-                                </p>
-                                <div class="post-thumb-gallery">
-                                    <figure class="post-thumb img-popup">
-                                        <a href="assets/images/post/post-1.jpg">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="post image">
+                        <div class="card" *ngFor="let post of timelinePosts">
+                                <div class="post-title d-flex align-items-center">
+    
+                                    <div class="profile-thumb">
+                                        <a href="#">
+                                            <figure class="profile-thumb-middle">
+                                                <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
+                                            </figure>
                                         </a>
-                                    </figure>
-                                </div>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 201 people like this</span>
-                                        <strong>201</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>41</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>07</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>
-                                    <span class="post-time">15 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- post title start -->
-                            <div class="post-content">
-                                <p class="post-desc pb-0">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for
-                                </p>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 206 people like this</span>
-                                        <strong>206</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>41</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>07</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">william henry</a></h6>
-                                    <span class="post-time">35 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
+    
+                                    <div class="posted-author">
+                                        <h6 class="author"><a href="profile.html">{{post.authorFirstName}} {{post.authorLastName}}</a></h6>
+                                        <span class="post-time">{{post.timeDif}}</span>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy.
-                                </p>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 112 people like this</span>
-                                        <strong>112</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>36</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>08</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Kate Palson</a></h6>
-                                    <span class="post-time">35 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- post title start -->
-                            
-                            <div class="post-content">
-                                <p class="post-desc">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy.
-                                </p>
-                                <div class="post-thumb-gallery img-gallery">
-                                    <div class="row g-0">
-                                        <div class="col-8">
-                                            <figure class="post-thumb">
-                                                <a class="gallery-selector" href="assets/images/post/post-2.jpg">
-                                                    <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                </a>
-                                            </figure>
+    
+                                    <div class="post-settings-bar">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <div class="post-settings arrow-shape">
+                                            <ul>
+                                                <li><button>Report</button></li>
+                                            </ul>
                                         </div>
-                                        <div class="col-4">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <figure class="post-thumb">
-                                                        <a class="gallery-selector" href="#">
-                                                            <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                        </a>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-12">
-                                                    <figure class="post-thumb">
-                                                        <a class="gallery-selector" href="#">
-                                                            <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                        </a>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-12">
-                                                    <figure class="post-thumb">
-                                                        <a class="gallery-selector" href="#">
-                                                            <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                        </a>
-                                                    </figure>
-                                                </div>
+                                    </div>
+                                </div>
+    
+                                <div class="post-content">
+                                    <p class="post-desc">
+                                        {{post.text}}
+                                    </p>
+                                    <div class="post-thumb-gallery">
+                                        <figure class="post-thumb img-popup" *ngIf="post.photos.length > 0">
+                                            <a href="{{post.photos[0]}}" target="_blank">
+                                                <img src={{post.photos[0]}} alt="post-image">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="post-meta">
+                                        <button class="post-meta-like d-flex align-items-center">
+                                            <i class="bi bi-heart"></i>
+                                            <span>0</span>
+                                        </button>
+                                        <ul class="comment-share-meta">
+                                            <li>
+                                                <button class="post-comment d-flex align-items-center" (click) = 'openComments(post.id)'>
+                                                    <i class="bi bi-chat-right-dots"></i>
+                                                    <span>{{post.comments.length}}</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="post-share d-flex align-items-center">
+                                                    <i class="bi bi-share"></i>
+                                                    <span>07</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div *ngIf="post.commentsClicked" class="comment-form">
+                                        <hr>
+                                        <form class="comment-inner-form" #commentForm = 'ngForm' (submit) = 'handleCommentSubmission(commentForm.value , post.id); commentForm.reset()' ngNativeValidate>
+                                            <textarea type="text" name="Text" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
+                                            <button type="submit" class="comment-submit-button"><i class="bi bi-send"></i></button>
+                                        </form>
+                                        <div class="loading" id="animation-loading" *ngIf="showCommentLoadingAnimation">
+                                            <div class="loading-inner">
+                                              <div class="loader">
+                                                <div class="loader_bounce loader_bounce_1"></div>
+                                                <div class="loader_bounce loader_bounce_2"></div>
+                                                <div class="loader_bounce loader_bounce_3"></div>
+                                              </div>
                                             </div>
-                                        </div>
+                                          </div>
                                     </div>
-                                </div>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 70 people like this</span>
-                                        <strong>70</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>28</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>12</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Robart Faul</a></h6>
-                                    <span class="post-time">40 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc pb-0">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for Many desktop publishing packages and web page
-                                    editors now use Lorem Ipsum as their default model text, and a search for Many
-                                    desktop publishing duskam azer.
-                                </p>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 250 people like this</span>
-                                        <strong>250</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>80</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>10</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Halen Omaro</a></h6>
-                                    <span class="post-time">45 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy.
-                                </p>
-                                <p class="post-desc post-desc-secondary">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for
-                                </p>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 160 people like this</span>
-                                        <strong>160</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>42</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>05</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp"alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Mili Raoulin</a></h6>
-                                    <span class="post-time">50 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
-                                    in their infancy.
-                                </p>
-                                <div class="post-thumb-gallery img-gallery">
-                                    <div class="row g-0">
-                                        <div class="col-6">
-                                            <figure class="post-thumb">
-                                                <a class="gallery-selector" href="#">
-                                                    <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                </a>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6">
-                                            <figure class="post-thumb">
-                                                <a class="gallery-selector" href="#">
-                                                    <img src="../../../../assets/images/profile-p.webp" alt="post image">
-                                                </a>
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 30 people like this</span>
-                                        <strong>30</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>65</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>04</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-
-                            <div class="post-title d-flex align-items-center">
-
-                                <div class="profile-thumb">
-                                    <a href="#">
-                                        <figure class="profile-thumb-middle">
-                                            <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                        </figure>
-                                    </a>
-                                </div>
-
-                                <div class="posted-author">
-                                    <h6 class="author"><a href="profile.html">Jon Wileyam</a></h6>
-                                    <span class="post-time">15 min ago</span>
-                                </div>
-
-                                <div class="post-settings-bar">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <div class="post-settings arrow-shape">
-                                        <ul>
-                                            <li><button>copy link to devnet</button></li>
-                                            <li><button>edit post</button></li>
-                                            <li><button>embed devnet</button></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="post-content">
-                                <p class="post-desc pb-0">
-                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                                    default model text, and a search for
-                                </p>
-                                <div class="post-meta">
-                                    <button class="post-meta-like">
-                                        <i class="bi bi-heart"></i>
-                                        <span>You and 320 people like this</span>
-                                        <strong>320</strong>
-                                    </button>
-                                    <ul class="comment-share-meta">
-                                        <li>
-                                            <button class="post-comment">
-                                                <i class="bi bi-chat-right-dots"></i>
-                                                <span>41</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button class="post-share">
-                                                <i class="bi bi-share"></i>
-                                                <span>07</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
                     <div class="col-lg-3 order-3">
                         <aside class="widget-area">
 
                             <div class="card widget-item">
                                 <h4 class="widget-title">Recent Notifications</h4>
-
                             </div>
-
                             <div class="card widget-item">
                                 <h4 class="widget-title">Advertisement</h4>
                                 <div class="widget-body">
@@ -716,7 +236,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card widget-item">
                                 <h4 class="widget-title">Friends Zone</h4>
                             </div>
@@ -725,7 +244,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
 

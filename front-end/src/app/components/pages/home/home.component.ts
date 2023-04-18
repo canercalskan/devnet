@@ -3,6 +3,9 @@ import { PostModel } from "src/app/models/post.model";
 import { UserService } from "src/app/services/user.service";
 import Swal from "sweetalert2";
 import { HttpClient } from "@angular/common/http";
+import {firstValueFrom } from "rxjs";
+import { PostResponseModel } from "src/app/models/post-response.model";
+import { CommentModel } from "src/app/models/comment.model";
 @Component({
     selector : 'home',
     templateUrl : './home.component.html',
@@ -14,7 +17,10 @@ export class HomeComponent implements OnInit{
     imageSelected : boolean = false;
     displayImage! : File;
     UploadImages : File[] = [];
-    // postImageDatas : Uint8Array[] = [];
+    postImages : string[] = []
+    timelinePosts! : PostResponseModel[];
+    showCommentLoadingAnimation : boolean = false;
+
     constructor (private UserService : UserService , private http : HttpClient) {}
 
     ngOnInit(): void {
@@ -33,26 +39,6 @@ export class HomeComponent implements OnInit{
               document.getElementById('previewImage')!.setAttribute('src', event.target!.result!.toString());
               document.getElementById('previewImage')!.style.display = 'block';
             });
-
-        // for(let i = 0; i < event.target.files.length; i++) {
-        //     const file = event.target.files[i];
-        //     const reader = new FileReader();
-        //     reader.readAsArrayBuffer(file);
-        //     reader.onload = () => {
-        //         const imageFile = new Uint8Array(reader.result as ArrayBuffer);
-        //         this.postImageDatas.push(imageFile);
-        //     }
-        // }
-
-        // ! image'ları base64 e çevir, postImages arrayine at.
-        //   for(let i = 0; i < event.target.files.length; i++) {
-        //     const reader = new FileReader();
-        //     reader.onload = (event : any) => {
-        //         this.postImages.push(event.target.result);
-        //     }
-        //     reader.readAsDataURL(event.target.files[i])
-        //   }
-        //   console.log(this.postImages);
         }
     }
 
@@ -83,13 +69,19 @@ export class HomeComponent implements OnInit{
             data.question2_results = 0;
         }
 
-        const sendData = {
-            Title : 'angular test',
-            Text : data.Text,
-            UploadImages : this.UploadImages
-        }
-        this.UserService.pushNewPost(sendData);
+
+        this.UserService.pushNewPost(data);
         this.imageSelected = false;
     }
 
+    openComments(postID : string) : void {
+        this.timelinePosts.find(post => post.id === postID)!.commentsClicked = true;
+    }
+
+    handleCommentSubmission(comment : CommentModel , postID : string) : void {
+        this.showCommentLoadingAnimation = true;
+        comment.PostId = postID;
+        comment.likes = 0;
+        // this.UserService.postComment()
+    }
 }

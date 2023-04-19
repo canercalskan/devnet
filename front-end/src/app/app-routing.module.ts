@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { JoinComponent } from './components/pages/join/join.component';
-import { MainGuard, JoinGuard } from './guards/auth.guard';
+import { MainGuard, JoinGuard, ProfileGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 const routes: Routes = [
@@ -11,6 +11,7 @@ const routes: Routes = [
   {path : 'join' , component : JoinComponent , canActivate : [JoinGuard]},
   {path : 'home' , component : HomeComponent , canActivate : [MainGuard]},
   {path : 'profile' , component : ProfileComponent , canActivate : [MainGuard]},
+  // {path : ':uid' , component : ProfileComponent , canActivate : [ProfileGuard]} //TODO : activate strategy when api is ready.
   {path : '**' , component : NotFoundComponent}
 
 ];

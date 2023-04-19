@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { setCookie , getCookie} from 'typescript-cookie';
 import { Observable, catchError, throwError } from 'rxjs';
 import { PostResponseModel } from '../models/post-response.model';
+import jwtDecode from 'jwt-decode';
 @Injectable({providedIn: 'root'})
 @NgModule()
 
@@ -14,6 +15,7 @@ export class UserService {
     jwtString! : string;
     constructor(private http : HttpClient) {
         this.jwtString = getCookie('user-authenticator-token')!;
+        console.log(jwtDecode(this.jwtString))
      }
 
     pushNewPost(postData : {Title : string , Text : string , UploadImages : File[]}) : void {
@@ -48,7 +50,7 @@ export class UserService {
     }
 
     getAllPosts() : Observable<PostResponseModel[]> {
-      return this.http.post<PostResponseModel[]>('http://91.107.194.181:5435/api/Post/GetAllPosts' , {})
+      return this.http.post<PostResponseModel[]>(environment.getAllPostsPath , {})
     }
 
     likePost(postID : string) : Observable<any> {
@@ -59,4 +61,6 @@ export class UserService {
       }
       return this.http.post(environment.likePostPath, {PostId : postID} , httpOptions);
     }
+
+    unlikePost() : void {}
 }

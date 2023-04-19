@@ -10,4 +10,5 @@ export interface UserModel {
     friends : UserModel[];
     status : string;
     profile_picture : string;
+    // TODO : add Posts[] : PostResponseModel[] attribute.
 }

@@ -22,6 +22,16 @@ export class MainGuard implements CanActivate {
 }
 
 @NgModule()
+export class ProfileGuard implements CanActivate {
+    constructor(private router : Router) {}
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        // TODO : get the uid from route parameter, post it to an API , if user exists, get the user's profile data, return true. 
+        // TODO : if user not exists, return false and navigate to home page.
+        return true;
+    }
+}
+
+@NgModule()
 
 export class JoinGuard implements CanActivate {
     constructor(private router : Router) {}

@@ -1,24 +1,98 @@
-<navbar-timeline></navbar-timeline>
-<!-- <div class="container"> -->
-    <div class="sidebar-field">
-        <profile-sidebar></profile-sidebar>
+<div class="row">
+    <div class="col profile-sidebar">
+        <ul>
+            <li> <i class="bi bi-house"></i> <span class="ps-3">Home</span></li>
+            <li><i class="bi bi-bell"></i> <span class="ps-3">Nofitications</span></li>
+            <li><i class="bi bi-envelope"></i> <span class="ps-3">Messages</span></li>
+            <li>
+                <button id="postBtn">Post</button>
+            </li>
+            <li id="logged-in-user" style="margin-left: 20%;">
+                <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
+                <div class="ps-2 pt-3">
+                    <b class="logged-in-username" style="font-size: 16px;">canercalskan</b>
+                    <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@canercalskan</p>
+                </div>
+                <div class="logged-in-user-settings d-flex align-items-center ps-3">
+                    <i class="bi bi-three-dots fs-6"></i>
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="main-field ps-5 ms-5 pt-5">
-        <div>
-            <p>Your Fullname</p>
-            <img src="-" alt="your-pp-image">
-        </div>
-        
-        <div>
-            
-        </div>
-
-        <div>
-
-        </div>
-
-        <div>
-
+    <div class="col-5 profile-content">
+        <div class="user-profile-info">
+            <div class="user-profile-header ps-3 d-flex" style="height: min-content;">
+                <div style="height: min-content; position: relative; top: .5rem; font-size: 25px;">
+                    <i class="bi bi-arrow-left-short" title="Back"></i>
+                </div>
+                <div class="w-100" style="height: min-content;">
+                    <div class="ps-3">
+                        <h5>canercalskan</h5>
+                        <p class="text-muted" style="position: relative; top: -.5rem; font-size: small;">0 posts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile-body">
+                <div class="user-profile-body-bg">
+                    <img src="../../../../assets/images/user-profile-bg.jpeg" alt="" id="user-profile-bg-img">
+                </div>
+                <img src="../../../../assets/images/profile-p.webp" alt="" id="user-pp">
+                <button>Add Friend</button>
+                <div class="user-profile-body-details">
+                    <b>Caner Eren Çalışkan</b>
+                    <p class="text-muted" style="position: relative; top: -3px; font-size: 15px;">@canercalskan</p>
+                    <div class="mt-1 mb-1">
+                        <i class="bi bi-calendar3"></i>
+                        <span class="text-muted ms-1" style="font-size: 14px;">Joined April 2023</span>
+                    </div>
+                    <div style="position: relative; top: 1rem;">
+                        <b>0</b> friends
+                    </div>
+                </div>
+                <hr>
+            </div>
         </div>
     </div>
-<!-- </div> -->
+    <div class="col profile-suggestions">
+        <div class="search-form-field">
+            <form action="">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Search..">
+            </form>
+        </div>
+        <div class="profile-suggestions-card">
+            <h5 class="mb-4 pt-2">You might know</h5>
+            <ul>
+                <li class="suggest-friend text-align-end">
+                    <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
+                    <div>
+                        <b class="logged-in-username" style="font-size: 16px;">Burak Y. Parlak</b>
+                        <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@burakparlak</p>
+                    </div>
+                </li>
+                <li class="suggest-friend">
+                    <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
+                    <div>
+                        <b class="logged-in-username" style="font-size: 16px;">Caner E. Çalışkan</b>
+                        <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@canercalskan</p>
+                    </div>
+                </li>
+                <li class="suggest-friend" >
+                    <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
+                    <div>
+                        <b class="logged-in-username" style="font-size: 16px;">Emre Tek</b>
+                        <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@emretek</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="profile-suggestions-card">
+            <h5 class="mb-4 pt-2">Activity</h5>
+            <ul>
+                <li><i class="bi bi-cup-hot"></i> <a href="#"> canercalskan</a> created new post.</li>
+                <li><i class="bi bi-cup-hot"></i><a href="#"> burakparlak</a> created new post.</li>
+                <li><i class="bi bi-cup-hot"></i><a href="#"> emretek</a> created new post. </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,175 @@
-.card {
-    border: none;
-    border-radius: 0;
-    padding: 30px;
-    margin-bottom: 30px;
-    -webkit-box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
-    box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+.row {
+    width: 100%;
+    margin-right: 0;
+    --bs-gutter-x : 0;
+    min-height: 100vh;
+    max-height: 100%;
 }
 
+p {
+    margin: 0;
+}
 
-.main-field {
+.profile-sidebar ul {
+    position: fixed;
+    width: 21%;
+    height: 100%;
+    padding-left: 0;
+    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.profile-sidebar ul li {
+    margin-left: 25%;
+    width: fit-content;
+    font-size: 22px;
+    transition: all .25s;
+}
 
+.profile-sidebar ul li:hover {
+    cursor: pointer;
+    color: #DB4734;
+}
+
+#logged-in-user {
+    display: flex;
+    font-size: 10px;
+    position: absolute;
+    bottom: 5px;
+    border-radius: 10%;
+    padding: 5px;
+}
+
+#logged-in-user:hover {
+    cursor:pointer;
+    color: inherit;
+}
+
+#logged-in-user img {
+    width: 50px;
+    height: 50px;
+    justify-self: center;
+    align-self: center;
+    border-radius: 50%;
+}
+
+li button {
+    background-color: #ff533c;
+    border-radius: 100px;
+    color: #ffff;
+    padding: 5px 4rem;
+    border: none;
+}
+
+.profile-suggestions {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.profile-suggestions form {
+    background-color: #EFF3F4;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.profile-suggestions form input {
+    background-color: #EFF3F4;
+    border: none;
+    outline: none; 
+}
+
+.profile-suggestions-card {
+    width: 85%;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding-left: 1rem;
+    margin-top: 15%;
+    background-color: #F6F9F9;
+    border-radius: 10px;
+}
+
+.profile-suggestions-card ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.profile-suggestions-card ul li {
+    margin: .5rem 0;
+}
+
+.profile-suggestions-card ul li a {
+    text-decoration: none;
+}
+
+.profile-suggestions-card ul li i {
+    color: #DB4734;
+}
+
+.suggest-friend {
+    display: flex;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.suggest-friend img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.suggest-friend div {
+    padding-left: .5rem;
+    padding-top: .2rem;
+}
+
+.profile-content {
+    border: .5px solid rgba(128, 128, 128, 0.412);
+}
+
+#user-profile-bg-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 0;
+    margin-left: 0;
+}
+
+#user-pp {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    top: -4rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+}
+
+.user-profile-body hr {
+    margin: 0;
+    margin-top: -1rem;
+}
+
+.user-profile-body button {
+    float: right;
+    color: #DB4734;
+    border: 1px solid #DB4734;
+    background-color: transparent;
+    margin-top: .5rem;
+    border-radius: 20px;
+    margin-right: .5rem;
+    padding: 5px .5rem;
+    transition: all .3s;
+}
+
+.user-profile-body button:hover {
+    color: #ffff;
+    background-color: #DB4734;
+}
+
+.user-profile-body-details {
+    position: relative;
+    top: -3rem;
+    left: 1.3rem;
 }

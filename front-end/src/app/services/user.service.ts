@@ -4,23 +4,24 @@ import { environment } from 'src/environments/environment';
 import { removeCookie } from 'typescript-cookie';
 import { PostModel } from '../models/post.model';
 import Swal from 'sweetalert2';
-import { UserModel } from '../models/user.model';
-import { CommentModel } from '../models/comment.model';
 import { setCookie , getCookie} from 'typescript-cookie';
-import { catchError, throwError } from 'rxjs';
-import { Title } from '@angular/platform-browser';
+import { Observable, catchError, throwError } from 'rxjs';
+import { PostResponseModel } from '../models/post-response.model';
 @Injectable({providedIn: 'root'})
 @NgModule()
 
 export class UserService {
-    constructor(private http : HttpClient) { }
+    jwtString! : string;
+    constructor(private http : HttpClient) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+     }
 
     pushNewPost(postData : {Title : string , Text : string , UploadImages : File[]}) : void {
-      const jwtString = getCookie('user-authenticator-token');
+      // const jwtString = getCookie('user-authenticator-token');
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-type' : 'multipart/form-data',
-          'Authorization': `Bearer ${jwtString}`,
+          'Authorization': `Bearer ${this.jwtString}`,
         }),
       };
 
@@ -46,16 +47,16 @@ export class UserService {
         location.reload();
     }
 
-    encodeImageFileAsBase64(file: File): Promise<string> {
-        return new Promise<string>((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => {
-            const base64EncodedString = window.btoa(reader.result as string);
-            resolve(base64EncodedString);
-          };
-          reader.readAsBinaryString(file);
-          reader.onerror = error => reject(error);
-        });
-      }
+    getAllPosts() : Observable<PostResponseModel[]> {
+      return this.http.post<PostResponseModel[]>('http://91.107.194.181:5435/api/Post/GetAllPosts' , {})
+    }
 
+    likePost(postID : string) : Observable<any> {
+      const httpOptions = {
+        headers : new HttpHeaders({
+          'Authorization': `Bearer ${this.jwtString}`,
+        })
+      }
+      return this.http.post(environment.likePostPath, {PostId : postID} , httpOptions);
+    }
 }

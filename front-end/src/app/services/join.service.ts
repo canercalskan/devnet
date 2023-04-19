@@ -30,21 +30,17 @@ export class JoinService {
           })
           
           this.http.post(this.registerPath , newUser , {observe : 'response'}).subscribe(response => {
-
-            // if(response === 'Success.') {
-            //     Swal.close();
-            //     Swal.fire('Success!' , 'You can login and use your account, enjoy!' , 'success').then(() => {
-            //         location.reload();
-            //     })
-            // }
-
-            // else {
-            //     Swal.close();
-            //     Swal.fire('Error' , 'An error occured, please contact us' , 'error').then(() => {
-            //         return;
-            //     })
-            // }
-            console.log(response);
+            if(response.ok) {
+                Swal.close();
+                Swal.fire('Success!' , 'You can login and start your DevNet journey!' , 'success').then(() => {
+                    this.router.navigateByUrl('home')
+                })
+            }
+            else {
+                Swal.fire('Error' , 'Something went wrong, please try again later or contact us.' , 'error').then(() => {
+                    return;
+                })
+            }
           })
     }
 

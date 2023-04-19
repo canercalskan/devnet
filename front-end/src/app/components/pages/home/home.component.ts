@@ -23,9 +23,31 @@ export class HomeComponent implements OnInit{
 
     constructor (private UserService : UserService , private http : HttpClient) {}
 
-    ngOnInit(): void {
-        this.http.post('http://91.107.194.181:5435/api/Post/GetAllPosts' , {}).subscribe(response => {
-            console.log(response)
+    async ngOnInit()  {
+        this.timelinePosts = (await firstValueFrom(this.UserService.getAllPosts())).filter(post => post.text !== null);
+        this.timelinePosts.forEach(post => {
+            const createdAt = new Date(post.createdAt);
+            const now = new Date();
+            const diffInMs = now.getTime() - createdAt.getTime();
+            const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+            const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+            const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+            const diffInWeeks = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 7));
+            if(diffInMinutes < 60) {
+                post.timeDif = diffInMinutes + ' minutes ago';
+            }
+            else if(diffInMinutes >= 60 && diffInHours < 24) {
+                post.timeDif = diffInHours + ' hours ago';
+            }
+            else if(diffInHours >= 24 && diffInDays < 7) {
+                post.timeDif = diffInDays + ' days ago';
+            }
+            else if(diffInDays >= 7 && diffInWeeks < 4) {
+                post.timeDif = diffInWeeks + ' weeks ago';
+            }
+            else {
+                post.timeDif = '1+ months ago';
+            }
         })
     }
     handleImageSelection(event : any) : void {
@@ -82,6 +104,12 @@ export class HomeComponent implements OnInit{
         this.showCommentLoadingAnimation = true;
         comment.PostId = postID;
         comment.likes = 0;
+        console.log(comment);
         // this.UserService.postComment()
+    }
+
+   async handlePostLike(PostId : string) {
+        const likeResponse = await firstValueFrom(this.UserService.likePost(PostId));
+        console.log(likeResponse);
     }
 }

@@ -24,29 +24,10 @@
                             <button class="chat-trigger notification"><i class="bi bi-chat-dots"></i>
                                 <span>04</span>
                             </button>
-                            <div class="mobile-chat-box">
-                                <div class="live-chat-title">
-
-                                    <div class="profile-thumb">
-                                        <a href="profile.html">
-                                            <figure class="profile-thumb-small profile-active">
-                                                <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                            </figure>
-                                        </a>
-                                    </div>
-
-                                    <div class="posted-author">
-                                        <h6 class="author"><a href="profile.html">Robart Marloyan</a></h6>
-                                        <span class="active-pro">active now</span>
-                                    </div>
-                                </div>
-
-                            </div>
                         </li>
                         <li>
                             <button class="search-trigger">
                                 <i class="bi bi-search"></i>
-                                <i class="close-icon flaticon-cross-out"></i>
                             </button>
                             <div class="mob-search-box">
                                 <form class="mob-search-inner">
@@ -75,14 +56,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 order-2 order-lg-1">
-                        <aside class="widget-area">
+                        <aside class="widget-area position-fixed-left">
 
                             <div class="card card-profile widget-item p-0">
                                 <div class="profile-banner">
                                     <figure class="profile-banner-small">
-                                        <a href="profile.html">
-                                            <img src="assets/images/banner/banner-small.jpg" alt="">
-                                        </a>
                                         <a href="profile.html" class="profile-thumb-2">
                                             <img src="../../../../assets/images/profile-p.webp" alt="">
                                         </a>
@@ -184,8 +162,9 @@
                                     </div>
                                     <div class="post-meta">
                                         <button class="post-meta-like d-flex align-items-center">
-                                            <i class="bi bi-heart"></i>
-                                            <span>0</span>
+                                            <i class="bi bi-heart" (click) = 'handlePostLike(post.id)'></i>
+                                            <span *ngIf="post.LikesCount">{{post.LikesCount}}</span>
+                                            <span *ngIf="!post.LikesCount">0</span>
                                         </button>
                                         <ul class="comment-share-meta">
                                             <li>
@@ -222,7 +201,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 order-3">
-                        <aside class="widget-area">
+                        <aside class="widget-area position-fixed-right">
 
                             <div class="card widget-item">
                                 <h4 class="widget-title">Recent Notifications</h4>

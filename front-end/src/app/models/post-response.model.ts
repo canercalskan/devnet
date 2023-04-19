@@ -11,4 +11,5 @@ export class PostResponseModel {
     title! : string;
     text! : string;
     commentsClicked : boolean = false;
+    LikesCount! : number;
 }

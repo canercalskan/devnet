@@ -42,5 +42,15 @@ namespace DevNet.Controllers
             await mediator.Send(request);
             return Ok();
         }
+
+        [Authorize]
+        [HttpPost("UnlikePost")]
+        public async Task<IActionResult> UnlikePost(UnlikePostCommandRequest request)
+        {
+            request.UserMail = User.FindFirst(ClaimTypes.Email)?.Value;
+
+            await mediator.Send(request);
+            return Ok();
+        }
     }
 }

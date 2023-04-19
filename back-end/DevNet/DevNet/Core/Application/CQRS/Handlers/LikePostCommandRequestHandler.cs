@@ -9,14 +9,12 @@ namespace DevNet.Core.Application.CQRS.Handlers
         private readonly IRepository<Like> likeRepo;
         private readonly IRepository<Post> postRepo;
         private readonly IRepository<User> userRepository;
-        private readonly IPhotoService photoService;
 
-        public LikePostCommandRequestHandler(IRepository<Like> likeRepo, IRepository<Post> postRepo, IRepository<User> userRepository, IPhotoService photoService)
+        public LikePostCommandRequestHandler(IRepository<Like> likeRepo, IRepository<Post> postRepo, IRepository<User> userRepository)
         {
             this.likeRepo = likeRepo;
             this.postRepo = postRepo;
             this.userRepository = userRepository;
-            this.photoService = photoService;
         }
 
         public async Task<Unit> Handle(LikePostCommandRequest request, CancellationToken cancellationToken)

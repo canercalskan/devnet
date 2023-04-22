@@ -1,7 +1,5 @@
 ﻿using DevNet.Core.Application.Interfaces;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System;
 using Microsoft.EntityFrameworkCore;
 using DevNet.Context;
 using DevNet.Core.Models;
@@ -58,6 +56,10 @@ namespace DevNet.Core.Application.Repositories
         public async Task<List<Post>> GetAllPostsWithCommentsAsync()
         {
             return await _context.Posts.Include(p => p.Comments).Include(p=>p.Likes).ToListAsync();
+        }
+        public async Task<List<Post>> GetUserPosts(string userId)
+        {
+            return await _context.Posts.Include(p => p.Comments).Include(p => p.Likes).Where(x=>x.AuthorId == userId).ToListAsync();
         }
     }
 }

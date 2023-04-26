@@ -6,8 +6,8 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /back-end/DevNet/DevNet
-COPY ["DevNet/DevNet.csproj", "DevNet/"]
+WORKDIR /src
+COPY ["back-end/DevNet/DevNet/DevNet.csproj", "DevNet/"]
 RUN dotnet restore "DevNet/DevNet.csproj"
 COPY . .
 WORKDIR "/back-end/DevNet/DevNet"

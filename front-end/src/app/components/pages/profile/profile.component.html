@@ -1,13 +1,14 @@
 <div class="row">
-    <div class="col profile-sidebar">
+    <div class="col profile-sidebar" id="profile-sidebar">
         <ul>
-            <li> <i class="bi bi-house"></i> <span class="ps-3">Home</span></li>
-            <li><i class="bi bi-bell"></i> <span class="ps-3">Nofitications</span></li>
-            <li><i class="bi bi-envelope"></i> <span class="ps-3">Messages</span></li>
-            <li>
-                <button id="postBtn">Post</button>
+            <li [routerLink]="['/home']"> <i class="bi bi-house" title="Home"></i> <span class="ps-3">Home</span></li>
+            <li><i class="bi bi-bell" title="Nofitications"></i> <span class="ps-3">Nofitications</span></li>
+            <li><i class="bi bi-envelope" title="Messages"></i> <span class="ps-3">Messages</span></li>
+            <li [routerLink]="['/home']">
+                <i class="bi bi-pencil-square" id="mobile-post-icon" title="New Post"></i>
+                <button id="postBtn" title="New Post">Post</button>
             </li>
-            <li id="logged-in-user" style="margin-left: 20%;">
+            <li id="logged-in-user">
                 <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
                 <div class="ps-2 pt-1">
                     <b class="logged-in-username" style="font-size: 16px;">canercalskan</b>
@@ -28,7 +29,7 @@
                 <div class="w-100" style="height: min-content;">
                     <div class="ps-3">
                         <h5>canercalskan</h5>
-                        <p class="text-muted" style="position: relative; top: -.5rem; font-size: small;">0 posts</p>
+                        <p class="text-muted" style="position: relative; top: -.5rem; font-size: small;">{{userProfile.posts.length}} posts</p>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@
                         <span class="text-muted ms-1" style="font-size: 14px;">Joined April 2023</span>
                     </div>
                     <div style="position: relative; top: 1rem;">
-                        <b>0</b> friends
+                        <b>{{userProfile.friends.length}}</b> friends
                     </div>
                 </div>
                 <div class="user-profile-body-tabs">
@@ -60,7 +61,12 @@
                 <hr style="border-top: 1px solid rgba(128, 128, 128, 0.51);">
             </div>
             <div class="user-profile-body-posts">
-                <p class="text-center text-muted pt-5">Wow, such empty..</p>
+                <p class="text-center text-muted pt-5" *ngIf="userProfile.posts.length === 0">Wow, such empty..</p>
+                <div *ngIf="userProfile.posts.length > 0">
+                    <div *ngFor="let post of userProfile.posts">
+                        lorem
+                    </div>
+                </div>
             </div>
         </div>
     </div>

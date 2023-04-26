@@ -10,6 +10,10 @@ p {
     margin: 0;
 }
 
+#mobile-post-icon {
+    display: none;
+}
+
 .profile-sidebar ul {
     position: fixed;
     width: 21%;
@@ -190,3 +194,57 @@ li button {
     color: #ff533c;
 }
 
+#logged-in-user {
+    margin-left: 20%;
+}
+
+
+@media only screen and (max-width : 1000px) {
+    .profile-sidebar ul li span {
+        display: none;
+    }
+
+    #profile-sidebar {
+        width: 1%;
+    }
+
+    #mobile-post-icon {
+        display: inline;
+    }
+
+    #postBtn {
+        display: none;
+    }
+
+    .profile-content {
+        width: 75%;
+        margin-right: 2rem;
+    }
+    .profile-suggestions {
+        display: none;
+    }
+
+    #logged-in-user {
+        display: none;
+    }
+
+    .profile-sidebar ul {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-sidebar ul li{
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+    .profile-content {
+        width: 100%;
+    }
+
+    .profile-sidebar {
+        display: none;
+    }
+}

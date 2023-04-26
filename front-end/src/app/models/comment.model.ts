@@ -2,7 +2,7 @@ import { UserModel } from "./user.model";
 
 export interface CommentModel {
     Id : string,
-    UserId : UserModel,
+    UserId : string,
     PostId : string,
     Text : string,
     likes : number,

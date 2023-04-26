@@ -1,3 +1,5 @@
+import { PostResponseModel } from "./post-response.model";
+
 export interface UserModel {
     email : string;
     username : string;
@@ -11,4 +13,5 @@ export interface UserModel {
     status : string;
     profile_picture : string;
     // TODO : add Posts[] : PostResponseModel[] attribute.
+    posts : PostResponseModel[];
 }

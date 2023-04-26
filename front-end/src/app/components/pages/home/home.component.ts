@@ -6,6 +6,8 @@ import { HttpClient } from "@angular/common/http";
 import {firstValueFrom } from "rxjs";
 import { PostResponseModel } from "src/app/models/post-response.model";
 import { CommentModel } from "src/app/models/comment.model";
+import jwtDecode from "jwt-decode";
+import { getCookie } from "typescript-cookie";
 @Component({
     selector : 'home',
     templateUrl : './home.component.html',
@@ -20,10 +22,14 @@ export class HomeComponent implements OnInit{
     postImages : string[] = []
     timelinePosts! : PostResponseModel[];
     showCommentLoadingAnimation : boolean = false;
-
+    currentUserJWTDecoded! : any;
+    currentUserID! : string
+    getAttr = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
     constructor (private UserService : UserService , private http : HttpClient) {}
 
     async ngOnInit()  {
+        this.currentUserJWTDecoded = jwtDecode(getCookie('user-authenticator-token')!, {header : false})
+        this.currentUserID = this.currentUserJWTDecoded[this.getAttr]
         this.timelinePosts = (await firstValueFrom(this.UserService.getAllPosts())).filter(post => post.text !== null);
         this.timelinePosts.forEach(post => {
             const createdAt = new Date(post.createdAt);
@@ -104,6 +110,7 @@ export class HomeComponent implements OnInit{
         this.showCommentLoadingAnimation = true;
         comment.PostId = postID;
         comment.likes = 0;
+        comment.UserId = this.currentUserID;
         console.log(comment);
         // this.UserService.postComment()
     }
@@ -112,4 +119,8 @@ export class HomeComponent implements OnInit{
         const likeResponse = await firstValueFrom(this.UserService.likePost(PostId));
         console.log(likeResponse);
     }
+}
+
+function getAttribute() {
+    throw new Error("Function not implemented.");
 }

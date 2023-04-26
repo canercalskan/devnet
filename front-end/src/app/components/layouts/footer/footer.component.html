@@ -1,3 +1,26 @@
-<div class="footer">
-    
-</div>
+<footer class="footer fixed-bottom">
+    <div class="search-friends-field">
+        <form #searchFriendsForm = 'ngForm' id="searchFriendsForm">
+            <input type="text" placeholder="Search your friends">
+            <i class="bi bi-search"></i>
+        </form>
+    </div>
+    <div class="immediate-chat-field">
+        <ul>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+            <li><img src="../../../../assets/images/profile-p.webp" alt="pp"></li>
+        </ul>
+    </div>
+
+    <div class="chat-field">
+        <form #chatForm = 'ngForm' id="chatForm">
+            <input type="text" placeholder="Send message">
+            <i class="bi bi-send" style="color: #DB4734;"></i>
+        </form>
+    </div>
+</footer>

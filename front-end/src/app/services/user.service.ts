@@ -8,14 +8,16 @@ import { setCookie , getCookie} from 'typescript-cookie';
 import { Observable, catchError, throwError } from 'rxjs';
 import { PostResponseModel } from '../models/post-response.model';
 import jwtDecode from 'jwt-decode';
+import { UserModel } from '../models/user.model';
 @Injectable({providedIn: 'root'})
 @NgModule()
 
 export class UserService {
     jwtString! : string;
     constructor(private http : HttpClient) {
+      if(getCookie('user-authenticator-token')) {
         this.jwtString = getCookie('user-authenticator-token')!;
-        console.log(jwtDecode(this.jwtString))
+      }
      }
 
     pushNewPost(postData : {Title : string , Text : string , UploadImages : File[]}) : void {
@@ -62,5 +64,11 @@ export class UserService {
       return this.http.post(environment.likePostPath, {PostId : postID} , httpOptions);
     }
 
+    getUserProfile(uid : string) : Observable<UserModel> {
+      return this.http.post<UserModel>(environment.getUserProfilePath , {})
+    }
+
     unlikePost() : void {}
+
+    addFriend() : void {}
 }

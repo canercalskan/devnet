@@ -127,7 +127,7 @@ li button {
 }
 
 .profile-content {
-    border: .5px solid rgba(128, 128, 128, 0.412);
+    border: .5px solid rgba(128, 128, 128, 0.384)
 }
 
 #user-profile-bg-img {
@@ -173,3 +173,20 @@ li button {
     top: -3rem;
     left: 1.3rem;
 }
+
+.user-profile-body-tabs ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding-left: 0;
+    padding-bottom: .5rem;
+}
+
+.user-profile-body-tabs ul li {
+    cursor: pointer;
+}
+
+.active-tab {
+    color: #ff533c;
+}
+

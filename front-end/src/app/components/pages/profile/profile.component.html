@@ -9,7 +9,7 @@
             </li>
             <li id="logged-in-user" style="margin-left: 20%;">
                 <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
-                <div class="ps-2 pt-3">
+                <div class="ps-2 pt-1">
                     <b class="logged-in-username" style="font-size: 16px;">canercalskan</b>
                     <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@canercalskan</p>
                 </div>
@@ -23,7 +23,7 @@
         <div class="user-profile-info">
             <div class="user-profile-header ps-3 d-flex" style="height: min-content;">
                 <div style="height: min-content; position: relative; top: .5rem; font-size: 25px;">
-                    <i class="bi bi-arrow-left-short" title="Back"></i>
+                    <i class="bi bi-arrow-left-short" title="Back" [routerLink]="['..']" routerLinkActive="router-link-active" ></i>
                 </div>
                 <div class="w-100" style="height: min-content;">
                     <div class="ps-3">
@@ -49,7 +49,18 @@
                         <b>0</b> friends
                     </div>
                 </div>
-                <hr>
+                <div class="user-profile-body-tabs">
+                    <ul>
+                        <li class="active-tab">Posts</li>
+                        <li>About</li>
+                        <li>Friends</li>
+                        <li>Activity</li>
+                    </ul>
+                </div>
+                <hr style="border-top: 1px solid rgba(128, 128, 128, 0.51);">
+            </div>
+            <div class="user-profile-body-posts">
+                <p class="text-center text-muted pt-5">Wow, such empty..</p>
             </div>
         </div>
     </div>

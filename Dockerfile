@@ -9,8 +9,8 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["back-end/DevNet/DevNet/DevNet.csproj", "DevNet/"]
 RUN dotnet restore "DevNet/DevNet.csproj"
-COPY . .
 WORKDIR "/src/DevNet"
+COPY . .
 RUN dotnet build "DevNet.csproj" -c Release -o /app/build
 
 FROM build AS publish

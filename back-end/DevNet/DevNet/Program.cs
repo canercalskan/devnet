@@ -27,8 +27,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.RequireHttpsMetadata = false;
     opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
     {
-        ValidAudience = "https//localhost",
-        ValidIssuer = "https//localhost",
+        ValidAudience = "https//91.107.194.181",
+        ValidIssuer = "https//91.107.194.181",
         ClockSkew = TimeSpan.Zero,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configValue!)),
         ValidateIssuerSigningKey = true,

@@ -38,8 +38,8 @@ namespace DevNet.JWTTokenService
 
 
             JwtSecurityToken token = new JwtSecurityToken(
-                issuer: "https//localhost",
-                audience: "https//localhost",
+                issuer: "https//91.107.194.181",
+                audience: "https//91.107.194.181",
                 claims: claims,
                 notBefore: DateTime.UtcNow,
                 expires: expireDate,

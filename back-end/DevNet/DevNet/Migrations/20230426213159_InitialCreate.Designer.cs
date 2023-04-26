@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DevNet.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230418203908_InitialCreate")]
+    [Migration("20230426213159_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -69,8 +69,6 @@ namespace DevNet.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Like");
                 });
@@ -223,13 +221,13 @@ namespace DevNet.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "be7b69b0-fff4-4c94-a3d0-71be7d13c1ac",
+                            Id = "fa910788-b720-4791-bea0-c7e9295f34bb",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "da6052bc-5022-48b4-8239-8a99ffd0ca90",
+                            Id = "4c8380ca-0da0-4949-95ea-b386b9741dd9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -358,13 +356,7 @@ namespace DevNet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DevNet.Core.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Post");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

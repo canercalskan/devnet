@@ -26,8 +26,8 @@ namespace DevNet.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpPost("GetAllPosts")]
-        public async Task<IActionResult> GetAllPosts()
+        [HttpPost("GetPosts")]
+        public async Task<IActionResult> GetPosts()
         {
             Console.WriteLine("DEBUG GetAllPosts CONTROLLER");
 

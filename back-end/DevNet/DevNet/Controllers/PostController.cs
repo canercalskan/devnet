@@ -29,6 +29,8 @@ namespace DevNet.Controllers
         [HttpPost("GetAllPosts")]
         public async Task<IActionResult> GetAllPosts()
         {
+            Console.WriteLine("DEBUG GetAllPosts CONTROLLER");
+
             var allPosts = await mediator.Send(new GetAllPostsQueryRequest());
             return Ok(allPosts);
         }

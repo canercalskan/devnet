@@ -24,6 +24,7 @@ namespace DevNet.Controllers
         public async Task<IActionResult> Register(UserRegisterCommandRequest request)
         {
             await mediator.Send(request);
+            Console.WriteLine("DEBUG REGISTER CONTROLLER");
             return Ok();
         }
         [HttpPost("Login")]
@@ -34,7 +35,7 @@ namespace DevNet.Controllers
 
             if (dto.IsExist)
             {
-
+                Console.WriteLine("DEBUG Login CONTROLLER");
                 return Created("", _tokenService.GenerateToken(dto));
             }
 

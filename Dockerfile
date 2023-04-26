@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["back-end/DevNet/DevNet/DevNet.csproj", "DevNet/"]
 RUN dotnet restore "DevNet/DevNet.csproj"
 COPY . .
-WORKDIR "/back-end/DevNet/DevNet"
+WORKDIR "/src/DevNet"
 RUN dotnet build "DevNet.csproj" -c Release -o /app/build
 
 FROM build AS publish

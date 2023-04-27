@@ -16,6 +16,7 @@ import { UserService } from './services/user.service';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { ProfileSidebar } from './components/layouts/profile-sidebar/profile-sidebar.component';
+import { PostsComponent } from './components/layouts/posts/posts.component';
 @NgModule({
   declarations: [
     AppComponent ,
@@ -23,7 +24,8 @@ import { ProfileSidebar } from './components/layouts/profile-sidebar/profile-sid
     JoinComponent,
     FooterComponent , NavbarComponent,
     NotFoundComponent , 
-    ProfileComponent , ProfileSidebar
+    ProfileComponent , ProfileSidebar,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

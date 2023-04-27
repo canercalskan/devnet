@@ -8,6 +8,7 @@ import { PostResponseModel } from "src/app/models/post-response.model";
 import { CommentModel } from "src/app/models/comment.model";
 import jwtDecode from "jwt-decode";
 import { getCookie } from "typescript-cookie";
+import { UserModel } from "src/app/models/user.model";
 @Component({
     selector : 'home',
     templateUrl : './home.component.html',
@@ -19,43 +20,24 @@ export class HomeComponent implements OnInit{
     imageSelected : boolean = false;
     displayImage! : File;
     UploadImages : File[] = [];
-    postImages : string[] = []
-    timelinePosts! : PostResponseModel[];
-    showCommentLoadingAnimation : boolean = false;
     currentUserJWTDecoded! : any;
     currentUserID! : string
+    currentUserProfile !: UserModel;
+    displayName! : string;
     getAttr = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
     constructor (private UserService : UserService , private http : HttpClient) {}
 
     async ngOnInit()  {
         this.currentUserJWTDecoded = jwtDecode(getCookie('user-authenticator-token')!, {header : false})
-        this.currentUserID = this.currentUserJWTDecoded[this.getAttr]
-        this.timelinePosts = (await firstValueFrom(this.UserService.getAllPosts())).filter(post => post.text !== null);
-        this.timelinePosts.forEach(post => {
-            const createdAt = new Date(post.createdAt);
-            const now = new Date();
-            const diffInMs = now.getTime() - createdAt.getTime();
-            const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-            const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
-            const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-            const diffInWeeks = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 7));
-            if(diffInMinutes < 60) {
-                post.timeDif = diffInMinutes + ' minutes ago';
-            }
-            else if(diffInMinutes >= 60 && diffInHours < 24) {
-                post.timeDif = diffInHours + ' hours ago';
-            }
-            else if(diffInHours >= 24 && diffInDays < 7) {
-                post.timeDif = diffInDays + ' days ago';
-            }
-            else if(diffInDays >= 7 && diffInWeeks < 4) {
-                post.timeDif = diffInWeeks + ' weeks ago';
-            }
-            else {
-                post.timeDif = '1+ months ago';
-            }
-        })
+        this.currentUserID = this.currentUserJWTDecoded[this.getAttr];
+        this.currentUserProfile = await firstValueFrom(this.UserService.getUserProfile());
+        this.displayName = this.capitalize(this.currentUserProfile.firstName + ' ' + this.currentUserProfile.lastName);
     }
+
+    capitalize(str : string) : string {
+        return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
     handleImageSelection(event : any) : void {
         this.displayImage = event.target.files[0];
         this.UploadImages = event.target.files;
@@ -82,7 +64,7 @@ export class HomeComponent implements OnInit{
         this.pollClicked = false
     }
 
-    handlePostSubmission(data : PostModel) : void {
+   async handlePostSubmission(data : PostModel) {
         Swal.fire({
             title : 'Uploading',
             text : 'Please wait a while..',
@@ -96,31 +78,9 @@ export class HomeComponent implements OnInit{
             data.question1_results = 0;
             data.question2_results = 0;
         }
-
-
+        data.UploadImages = this.UploadImages;
         this.UserService.pushNewPost(data);
         this.imageSelected = false;
     }
-
-    openComments(postID : string) : void {
-        this.timelinePosts.find(post => post.id === postID)!.commentsClicked = true;
-    }
-
-    handleCommentSubmission(comment : CommentModel , postID : string) : void {
-        this.showCommentLoadingAnimation = true;
-        comment.PostId = postID;
-        comment.likes = 0;
-        comment.UserId = this.currentUserID;
-        console.log(comment);
-        // this.UserService.postComment()
-    }
-
-   async handlePostLike(PostId : string) {
-        const likeResponse = await firstValueFrom(this.UserService.likePost(PostId));
-        console.log(likeResponse);
-    }
 }
 
-function getAttribute() {
-    throw new Error("Function not implemented.");
-}

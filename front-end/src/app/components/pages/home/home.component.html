@@ -66,7 +66,7 @@
                                         </a>
                                     </figure>
                                     <div class="profile-desc text-center">
-                                        <h6 class="author"><a href="profile.html">Erik Jhonson</a></h6>
+                                        <h6 class="author"><a href="profile">{{displayName}}</a></h6>
                                         <p>Any one can join with but Social network us if you want Any one can join with us if you want</p>
                                     </div>
                                 </div>
@@ -121,84 +121,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="card" *ngFor="let post of timelinePosts">
-                                <div class="post-title d-flex align-items-center">
-    
-                                    <div class="profile-thumb">
-                                        <a href="#">
-                                            <figure class="profile-thumb-middle">
-                                                <img src="../../../../assets/images/profile-p.webp" alt="profile picture">
-                                            </figure>
-                                        </a>
-                                    </div>
-    
-                                    <div class="posted-author">
-                                        <h6 class="author"><a href="profile.html">{{post.authorFirstName}} {{post.authorLastName}}</a></h6>
-                                        <span class="post-time">{{post.timeDif}}</span>
-                                    </div>
-    
-                                    <div class="post-settings-bar">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <div class="post-settings arrow-shape">
-                                            <ul>
-                                                <li><button>Report</button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="post-content">
-                                    <p class="post-desc">
-                                        {{post.text}}
-                                    </p>
-                                    <div class="post-thumb-gallery">
-                                        <figure class="post-thumb img-popup" *ngIf="post.photos.length > 0">
-                                            <a href="{{post.photos[0]}}" target="_blank">
-                                                <img src={{post.photos[0]}} alt="post-image">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                    <div class="post-meta">
-                                        <button class="post-meta-like d-flex align-items-center">
-                                            <i class="bi bi-heart" (click) = 'handlePostLike(post.id)'></i>
-                                            <span *ngIf="post.LikesCount">{{post.LikesCount}}</span>
-                                            <span *ngIf="!post.LikesCount">0</span>
-                                        </button>
-                                        <ul class="comment-share-meta">
-                                            <li>
-                                                <button class="post-comment d-flex align-items-center" (click) = 'openComments(post.id)'>
-                                                    <i class="bi bi-chat-right-dots"></i>
-                                                    <span>{{post.comments.length}}</span>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="post-share d-flex align-items-center">
-                                                    <i class="bi bi-share"></i>
-                                                    <span>07</span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div *ngIf="post.commentsClicked" class="comment-form">
-                                        <hr>
-                                        <form class="comment-inner-form" #commentForm = 'ngForm' (submit) = 'handleCommentSubmission(commentForm.value , post.id); commentForm.reset()' ngNativeValidate>
-                                            <textarea type="text" name="Text" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
-                                            <button type="submit" class="comment-submit-button"><i class="bi bi-send"></i></button>
-                                        </form>
-                                        <div class="loading" id="animation-loading" *ngIf="showCommentLoadingAnimation">
-                                            <div class="loading-inner">
-                                              <div class="loader">
-                                                <div class="loader_bounce loader_bounce_1"></div>
-                                                <div class="loader_bounce loader_bounce_2"></div>
-                                                <div class="loader_bounce loader_bounce_3"></div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                    </div>
-                            </div>
-                        </div>
+                        <posts></posts>
                     </div>
                     <div class="col-lg-3 order-3">
                         <aside class="widget-area position-fixed-right mt-5">

@@ -1,4 +1,3 @@
-
 export const environment = {
   production: false,
 
@@ -7,11 +6,12 @@ export const environment = {
   loginPath : 'http://91.107.194.181:5435/api/Auth/Login',
 
   //Post API Paths
-  getAllPostsPath : 'http://91.107.194.181:5435/api/Post/GetAllPosts',
+  getAllPostsPath : 'http://91.107.194.181:5435/api/Post/GetPosts',
   postPath : 'http://91.107.194.181:5435/api/Post/CreatePost',
   likePostPath : 'http://91.107.194.181:5435/api/Post/LikePost',
   unlikePostPath : 'http://91.107.194.181:5435/api/Post/UnlikePost',
-  getUserProfilePath : 'http://97.107.194.181:5435/api/User/GetLoggedInUserProfileInfo',
+  getUserProfilePath : 'http://91.107.194.181:5435/api/UserProfile/GetLoggedInUserProfileInfo',
+
 };
 
 

@@ -11,5 +11,10 @@ export class PostResponseModel {
     title! : string;
     text! : string;
     commentsClicked : boolean = false;
-    LikesCount! : number;
+    likes! : {
+        id: string;
+        time: string;
+        userId: string
+    }[];
+    likesCount !: number;
 }

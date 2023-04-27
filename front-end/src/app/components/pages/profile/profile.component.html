@@ -11,7 +11,7 @@
             <li id="logged-in-user">
                 <img src="../../../../assets/images/profile-p.webp" alt="logged-in-user-pp">
                 <div class="ps-2 pt-1">
-                    <b class="logged-in-username" style="font-size: 16px;">canercalskan</b>
+                    <b class="logged-in-username" style="font-size: 16px;">{{displayName}}</b>
                     <p class="text-muted" style="font-size: 14px; position: relative;top: -5px;">@canercalskan</p>
                 </div>
                 <div class="logged-in-user-settings d-flex align-items-center ps-3">
@@ -20,34 +20,35 @@
             </li>
         </ul>
     </div>
-    <div class="col-5 profile-content">
+    <div class="col-6 profile-content">
         <div class="user-profile-info">
-            <div class="user-profile-header ps-3 d-flex" style="height: min-content;">
-                <div style="height: min-content; position: relative; top: .5rem; font-size: 25px;">
+            <div class="user-profile-header ps-3 d-flex pt-2" style="height: min-content;">
+                <div style="height: min-content; position: relative; top: 4px; font-size: 25px;">
                     <i class="bi bi-arrow-left-short" title="Back" [routerLink]="['..']" routerLinkActive="router-link-active" ></i>
                 </div>
                 <div class="w-100" style="height: min-content;">
                     <div class="ps-3">
                         <h5>canercalskan</h5>
-                        <p class="text-muted" style="position: relative; top: -.5rem; font-size: small;">{{userProfile.posts.length}} posts</p>
+                        <p class="text-muted" style="position: relative; top: -.5rem; font-size: small;">{{currentUserProfile.posts.length}} posts</p>
                     </div>
                 </div>
             </div>
-            <div class="user-profile-body">
+            <div class="user-profile-body mb-3">
                 <div class="user-profile-body-bg">
                     <img src="../../../../assets/images/user-profile-bg.jpeg" alt="" id="user-profile-bg-img">
                 </div>
                 <img src="../../../../assets/images/profile-p.webp" alt="" id="user-pp">
                 <button>Add Friend</button>
                 <div class="user-profile-body-details">
-                    <b>Caner Eren Çalışkan</b>
+                    <b>{{displayName}}</b>
                     <p class="text-muted" style="position: relative; top: -3px; font-size: 15px;">@canercalskan</p>
                     <div class="mt-1 mb-1">
                         <i class="bi bi-calendar3"></i>
                         <span class="text-muted ms-1" style="font-size: 14px;">Joined April 2023</span>
                     </div>
                     <div style="position: relative; top: 1rem;">
-                        <b>{{userProfile.friends.length}}</b> friends
+                        <!-- <b>{{userProfile.friends.length}}</b> friends -->
+                        <b>0</b> friends
                     </div>
                 </div>
                 <div class="user-profile-body-tabs">
@@ -61,12 +62,8 @@
                 <hr style="border-top: 1px solid rgba(128, 128, 128, 0.51);">
             </div>
             <div class="user-profile-body-posts">
-                <p class="text-center text-muted pt-5" *ngIf="userProfile.posts.length === 0">Wow, such empty..</p>
-                <div *ngIf="userProfile.posts.length > 0">
-                    <div *ngFor="let post of userProfile.posts">
-                        lorem
-                    </div>
-                </div>
+                <p class="text-center text-muted pt-5" *ngIf="currentUserProfile.posts.length === 0">Wow, such empty..</p>
+                <posts></posts>
             </div>
         </div>
     </div>

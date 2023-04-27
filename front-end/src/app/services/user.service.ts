@@ -21,10 +21,11 @@ export class UserService {
      }
 
     pushNewPost(postData : {Title : string , Text : string , UploadImages : File[]}) : void {
-      // const jwtString = getCookie('user-authenticator-token');
+      if(getCookie('user-authenticator-token')) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+      }
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-type' : 'multipart/form-data',
           'Authorization': `Bearer ${this.jwtString}`,
         }),
       };
@@ -32,9 +33,10 @@ export class UserService {
       const formData : FormData = new FormData();
       formData.append('Title' , postData.Title);
       formData.append('Text' , postData.Text);
+      formData.append('UploadImages' , postData.UploadImages[0]);
       
 
-      this.http.post(environment.postPath , postData, httpOptions).pipe(
+      this.http.post(environment.postPath , formData, httpOptions).pipe(
         catchError((error : HttpErrorResponse) => {
           console.log(error)
           Swal.fire('Error' , 'Something went wrong, contact us.' , 'error');
@@ -56,6 +58,9 @@ export class UserService {
     }
 
     likePost(postID : string) : Observable<any> {
+      if(getCookie('user-authenticator-token')) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+      }
       const httpOptions = {
         headers : new HttpHeaders({
           'Authorization': `Bearer ${this.jwtString}`,
@@ -64,11 +69,33 @@ export class UserService {
       return this.http.post(environment.likePostPath, {PostId : postID} , httpOptions);
     }
 
-    getUserProfile(uid : string) : Observable<UserModel> {
-      return this.http.post<UserModel>(environment.getUserProfilePath , {})
+    getUserProfile() : Observable<UserModel> {
+      if(getCookie('user-authenticator-token')) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+      }
+      const httpOptions = {
+        headers : new HttpHeaders({
+          'Authorization': `Bearer ${this.jwtString}`,
+        })
+      }
+      return this.http.post<UserModel>(environment.getUserProfilePath , {} , httpOptions)
     }
 
-    unlikePost() : void {}
+    unlikePost(postID : string) : Observable<any> {
+      if(getCookie('user-authenticator-token')) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+      }
+      const httpOptions = {
+        headers : new HttpHeaders({
+          'Authorization': `Bearer ${this.jwtString}`,
+        })
+      }
+      return this.http.post(environment.unlikePostPath , {PostID : postID} , httpOptions)
+    }
+
+    // postComment() : Observable<any> {
+
+    // }
 
     addFriend() : void {}
 }

@@ -1,10 +1,11 @@
 import { UserModel } from "./user.model";
 
 export interface CommentModel {
-    Id : string,
-    UserId : string,
-    PostId : string,
-    Text : string,
+    id : string,
+    userId : string,
+    postId : string,
+    text : string,
     likes : number,
-    Time : string
+    time : string,
+    timediff : string
 }

@@ -1,4 +1,3 @@
-
 a {
     -webkit-transition: 0.4s;
     -o-transition: 0.4s;
@@ -128,6 +127,17 @@ textarea:focus {
     opacity: 1;
 }
 
+#post-seen-info {
+    font-size: small;
+}
+
+#post-seen-info:hover {
+    cursor: default;
+}
+
+#post-seen-info span {
+    padding-left: 1.5px;
+}
 
 .container {
     padding-right: calc(var(--bs-gutter-x) * .625);
@@ -438,7 +448,6 @@ only screen and (max-width: 767.98px) {
     color: #ffff;
     padding: 5px 10px;
     border-radius: 50px;
-    /* margin-top: 0px; */
 }
 
 .post-actions i {
@@ -485,7 +494,6 @@ input[type = "file"] {
     background-color: rgba(229, 95, 95, 0.275);
 }
 
-
 @media only screen and (max-width: 479.98px) {
     .share-text-box .btn-share {
         display: none;
@@ -500,38 +508,11 @@ input[type = "file"] {
     max-width: 600px;
 }
 
-.post-share-btn {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    padding: 14px 30px 12px;
-    border-radius: 40px;
-    background-color: #dc4734;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.post-share-btn:hover {
-    background-color: #333333;
-}
-
 .share-field-big {
     width: 100%;
     padding: 15px;
     border: 1px solid #dddddd;
     height: 200px !important;
-}
-
-.posted-author {
-    margin-left: 20px;
-}
-
-.posted-author .post-time {
-    display: block;
-    font-size: 14px;
-    line-height: 1;
-    padding-top: 10px;
 }
 
 .author {
@@ -548,80 +529,6 @@ input[type = "file"] {
 .author a:hover {
     color: #dc4734;
     text-decoration: underline;
-}
-
-.post-settings-bar {
-    margin-left: auto;
-    position: relative;
-    cursor: pointer;
-}
-
-.post-settings-bar span {
-    width: 20px;
-    height: 1px;
-    display: block;
-    background-color: #ccc;
-    margin-bottom: 4px;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
-}
-
-.post-settings-bar span:last-child {
-    margin-bottom: 0;
-}
-
-.post-settings-bar:hover span {
-    background-color: #dc4734;
-}
-
-.post-settings-bar:hover .post-settings {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: translateY(20px);
-    -ms-transform: translateY(20px);
-    transform: translateY(20px);
-}
-
-.post-settings {
-    right: 0;
-    top: 100%;
-    width: 200px;
-    background-color: #fff;
-    position: absolute;
-    padding: 20px;
-    z-index: 9;
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
-    -webkit-box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
-    box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s;
-    -webkit-transform: translateY(30px);
-    -ms-transform: translateY(30px);
-    transform: translateY(30px);
-}
-
-.post-settings li {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.post-settings li button {
-    color: #333333;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    text-transform: capitalize;
-}
-
-.post-settings li button:hover {
-    color: #dc4734;
 }
 
 .post-settings li button:last-child {
@@ -645,40 +552,6 @@ input[type = "file"] {
     border-right: 10px solid transparent;
 }
 
-.post-thumb-gallery {
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.post-thumb img {
-    width: 100%;
-}
-
-.post-content {
-    padding-top: 18px;
-}
-
-.post-desc {
-    padding-bottom: 16px;
-}
-
-.post-desc-secondary {
-    padding-top: 18px;
-    padding-bottom: 0;
-}
-
-.post-meta {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0 12px;
-    margin-top: 20px;
-}
 .like-page-list-wrapper li {
     margin-bottom: 35px;
 }
@@ -767,66 +640,6 @@ input[type = "file"] {
     }
   }
 
-
-@media only screen and (max-width: 479.98px) {
-    .post-meta .post-meta-like span {
-        display: none;
-    }
-}
-
-.post-meta .post-meta-like strong {
-    display: none;
-    font-size: 14px;
-    font-weight: 400;
-    padding-left: 8px;
-    color: #666666;
-}
-
-@media only screen and (max-width: 479.98px) {
-    .post-meta .post-meta-like strong {
-        display: inline-block;
-    }
-}
-
-.post-meta .comment-share-meta {
-    margin-left: auto;
-}
-
-.post-meta .comment-share-meta li {
-    display: inline-block;
-    margin-left: 24px;
-}
-
-.post-meta .comment-share-meta li:first-child {
-    margin-left: 0;
-}
-
-.post-meta-like i,
-.post-comment i,
-.post-share i {
-    font-size: 20px;
-    color: #333333;
-    vertical-align: middle;
-}
-
-.post-meta-like span,
-.post-comment span,
-.post-share span {
-    color: #666666;
-    vertical-align: text-bottom;
-    padding-left: 8px;
-}
-
-.post-meta-like:hover i,
-.post-meta-like:hover span,
-.post-comment:hover i,
-.post-comment:hover span,
-.post-share:hover i,
-.post-share:hover span {
-    color: #dc4734;
-}
-
-
 .profile-banner-small {
     position: relative;
 }
@@ -878,7 +691,6 @@ input[type = "file"] {
 .like-button i:hover {
     color: red;
 }
-
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
     .profile-banner-large {

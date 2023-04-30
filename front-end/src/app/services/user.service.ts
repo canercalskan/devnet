@@ -2,13 +2,13 @@ import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { removeCookie } from 'typescript-cookie';
-import { PostModel } from '../models/post.model';
 import Swal from 'sweetalert2';
 import { setCookie , getCookie} from 'typescript-cookie';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
 import { PostResponseModel } from '../models/post-response.model';
 import jwtDecode from 'jwt-decode';
 import { UserModel } from '../models/user.model';
+import { CommentModel } from '../models/comment.model';
 @Injectable({providedIn: 'root'})
 @NgModule()
 
@@ -20,7 +20,7 @@ export class UserService {
       }
      }
 
-    pushNewPost(postData : {Title : string , Text : string , UploadImages : File[]}) : void {
+    pushNewPost(postData : {Title : string , Text : string , UploadPhotos : File[]}) : void {
       if(getCookie('user-authenticator-token')) {
         this.jwtString = getCookie('user-authenticator-token')!;
       }
@@ -33,8 +33,9 @@ export class UserService {
       const formData : FormData = new FormData();
       formData.append('Title' , postData.Title);
       formData.append('Text' , postData.Text);
-      formData.append('UploadImages' , postData.UploadImages[0]);
-      
+      for(let i = 0; i < postData.UploadPhotos.length; i++) {
+        formData.append('UploadPhotos' , postData.UploadPhotos[i]);
+      }
 
       this.http.post(environment.postPath , formData, httpOptions).pipe(
         catchError((error : HttpErrorResponse) => {
@@ -42,9 +43,7 @@ export class UserService {
           Swal.fire('Error' , 'Something went wrong, contact us.' , 'error');
           return throwError(() => {})
         })
-      ).subscribe(r => {
-        console.log(r)
-      })
+      ).subscribe();
       Swal.close();
     }
 
@@ -93,9 +92,19 @@ export class UserService {
       return this.http.post(environment.unlikePostPath , {PostID : postID} , httpOptions)
     }
 
-    // postComment() : Observable<any> {
+  postComment(comment : CommentModel) : Observable<CommentModel> {
+    console.log(comment);
+      if(getCookie('user-authenticator-token')) {
+        this.jwtString = getCookie('user-authenticator-token')!;
+      }
+      const httpOptions = {
+        headers : new HttpHeaders({
+          'Authorization': `Bearer ${this.jwtString}`,
+        })
+      }
 
-    // }
+      return this.http.post<CommentModel>(environment.commentPath , comment , httpOptions)
+    }
 
     addFriend() : void {}
 }

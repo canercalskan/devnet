@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { firstValueFrom } from "rxjs";
+import { firstValueFrom, lastValueFrom } from "rxjs";
 import { PostResponseModel } from "src/app/models/post-response.model";
 import { UserModel } from "src/app/models/user.model";
 import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
 import jwtDecode from "jwt-decode";
 import { getCookie } from "typescript-cookie";
+import { CommentModel } from "src/app/models/comment.model";
 
 @Component({
     templateUrl : './posts.component.html',
@@ -89,13 +90,16 @@ export class PostsComponent implements OnInit{
         return timediff;
     }
 
-    handleCommentSubmission(comment : any , postID : string) {
+   async handleCommentSubmission(comment : CommentModel , postID : string) {
         this.showCommentLoadingAnimation = true;
         comment.PostId = postID;
-        comment.likes = 0;
-        comment.UserId = this.currentUserID;
-        console.log(comment);
-        // this.UserService.postComment()
+
+        try {
+            const commentResponse = await lastValueFrom(this.userService.postComment(comment))
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
     openComments(postID : string) {

@@ -1,10 +1,11 @@
+import { CommentResponseModel } from "./comment-response.model";
 import { CommentModel } from "./comment.model";
 
 export class PostResponseModel {
     id! : string;
     authorFirstName! : string;
     authorLastName! : string;
-    comments! : CommentModel[];
+    comments! : CommentResponseModel[];
     createdAt! : string;
     timeDif : string = '';
     photos! : string[];

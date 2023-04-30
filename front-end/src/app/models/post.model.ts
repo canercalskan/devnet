@@ -9,7 +9,7 @@ export class PostModel {
     Text! : string;
     likes! : number;
     comments! : CommentModel[];
-    UploadImages : File[] = [];
+    UploadPhotos : File[] = [];
     question1!: string | null;
     question2! : string | null;
     question1_results! : number | null

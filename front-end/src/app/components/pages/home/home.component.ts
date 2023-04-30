@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit{
             data.question1_results = 0;
             data.question2_results = 0;
         }
-        data.UploadImages = this.UploadImages;
+        data.UploadPhotos = this.UploadImages;
         this.UserService.pushNewPost(data);
         this.imageSelected = false;
     }

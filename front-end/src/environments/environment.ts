@@ -11,6 +11,7 @@ export const environment = {
   likePostPath : 'http://91.107.194.181:5435/api/Post/LikePost',
   unlikePostPath : 'http://91.107.194.181:5435/api/Post/UnlikePost',
   getUserProfilePath : 'http://91.107.194.181:5435/api/UserProfile/GetLoggedInUserProfileInfo',
+  commentPath : 'http://91.107.194.181:5435/api/Comment/PostComment',
 
 };
 

@@ -86,7 +86,7 @@
                 </ul>
                 <hr style="color: #FF0000; border-style: dotted;" *ngIf="post.comments.length > 0">
                 <form class="comment-inner-form" #commentForm = 'ngForm' (submit) = 'handleCommentSubmission(commentForm.value , post.id); commentForm.reset()' ngNativeValidate>
-                    <textarea type="text" name="Text" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
+                    <textarea type="text" name="CommentText" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
                     <button type="submit" class="comment-submit-button"><i class="bi bi-send"></i></button>
                 </form>
                 <div class="loading" id="animation-loading" *ngIf="showCommentLoadingAnimation">
@@ -190,7 +190,7 @@
                     </li>
                 </ul>
                 <form class="comment-inner-form" #commentForm = 'ngForm' (submit) = 'handleCommentSubmission(commentForm.value , post.id); commentForm.reset()' ngNativeValidate>
-                    <textarea type="text" name="Text" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
+                    <textarea type="text" name="CommentText" class="comment-input-field" placeholder="Make a comment.." ngModel required></textarea>
                     <button type="submit" class="comment-submit-button"><i class="bi bi-send"></i></button>
                 </form>
                 <div class="loading" id="animation-loading" *ngIf="showCommentLoadingAnimation">

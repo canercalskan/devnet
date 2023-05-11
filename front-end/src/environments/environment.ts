@@ -6,13 +6,14 @@ export const environment = {
   loginPath : 'http://91.107.194.181:5435/api/Auth/Login',
 
   //Post API Paths
-  getAllPostsPath : 'http://91.107.194.181:5435/api/Post/GetPosts',
+  getAllPostsPath : 'http://91.107.194.181:5435/api/Post/GetAllPosts',
   postPath : 'http://91.107.194.181:5435/api/Post/CreatePost',
   likePostPath : 'http://91.107.194.181:5435/api/Post/LikePost',
   unlikePostPath : 'http://91.107.194.181:5435/api/Post/UnlikePost',
-  getUserProfilePath : 'http://91.107.194.181:5435/api/UserProfile/GetLoggedInUserProfileInfo',
   commentPath : 'http://91.107.194.181:5435/api/Comment/PostComment',
 
+  //Profile API Paths
+  getUserProfilePath : 'http://91.107.194.181:5435/api/UserProfile/GetLoggedInUserProfileInfo',
 };
 
 

@@ -28,15 +28,9 @@ export class JoinService {
                 Swal.showLoading()
             }
           })
-
-        //   TODO : slugify the firstName and lastName, take it as a username, check if username is taken.
-        //   TODO : if taken, randomly add a number at the end of the username and repeat the process until username is unique.
-        //   TODO : when unique, complete the registration process.
-
-        //   newUser.username = slugify(newUser.firstName + newUser.lastName , {lower : true});
-        //   console.log(newUser.username);
           
           this.http.post(this.registerPath , newUser , {observe : 'response'}).subscribe(response => {
+            console.log(response);
             if(response.ok) {
                 Swal.close();
                 Swal.fire('Success!' , 'You can login and start your DevNet journey!' , 'success').then(() => {

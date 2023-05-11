@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit{
         this.currentUserID = this.currentUserJWTDecoded[this.getAttr];
         this.currentUserProfile = await firstValueFrom(this.UserService.getUserProfile());
         this.displayName = this.capitalize(this.currentUserProfile.firstName + ' ' + this.currentUserProfile.lastName);
+        console.log(this.currentUserProfile);
     }
 
     capitalize(str : string) : string {

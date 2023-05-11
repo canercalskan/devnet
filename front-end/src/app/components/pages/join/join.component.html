@@ -64,7 +64,7 @@
                             <form #loginForm = 'ngForm' class="login-area" (submit)="handleLoginForm(loginForm.value); loginForm.reset()" ngNativeValidate>
                                 <div class="row align-items-center">
                                     <div class="col-12 col-sm">
-                                        <input type="text" placeholder="Email or Userame" class="single-field" name="email" ngModel required>
+                                        <input type="email" placeholder="Email or Userame" class="single-field" name="email" ngModel required>
                                     </div>
                                     <div class="col-12 col-sm">
                                         <input type="password" placeholder="Password" class="single-field" name="password" ngModel required>
@@ -93,8 +93,11 @@
                                     <h3 class="title">Welcome to Devnet</h3>
                                     <form #signUpForm = 'ngForm' class="signup-inner--form" (submit) = 'handleSignUpForm(signUpForm.value); signUpForm.reset()' ngNativeValidate>
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-md-6">
                                                 <input type="email" class="single-field" name="email" placeholder="Email" ngModel required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="single-field" name="UserName" placeholder="Username" ngModel required>
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="text" class="single-field" name="firstName" placeholder="First Name" ngModel required>

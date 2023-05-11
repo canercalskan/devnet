@@ -2,7 +2,7 @@ import { PostResponseModel } from "./post-response.model";
 
 export interface UserModel {
     email : string;
-    username : string;
+    UserName : string;
     firstName : string;
     lastName : string;
     password : string;

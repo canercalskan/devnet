@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { firstValueFrom, lastValueFrom } from "rxjs";
+import { BehaviorSubject, Observable, firstValueFrom, lastValueFrom } from "rxjs";
 import { PostResponseModel } from "src/app/models/post-response.model";
 import { UserModel } from "src/app/models/user.model";
 import { UserService } from "src/app/services/user.service";
@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import jwtDecode from "jwt-decode";
 import { getCookie } from "typescript-cookie";
 import { CommentModel } from "src/app/models/comment.model";
+import Swal from "sweetalert2";
 
 @Component({
     templateUrl : './posts.component.html',
@@ -17,22 +18,22 @@ import { CommentModel } from "src/app/models/comment.model";
 export class PostsComponent implements OnInit{
     showCommentLoadingAnimation : boolean = false;
     userProfile! : UserModel;
-    timelinePosts! : PostResponseModel[];
+    private postsSubject = new BehaviorSubject<PostResponseModel[]>([]);
+    timelinePosts !: PostResponseModel[];
+    // timelinePosts$ : Observable<PostResponseModel[]> = this.postsSubject.asObservable();
     currentUserJWTDecoded : any;
     currentUserID! : string;
-    currentUserLikedPosts : string[] = []
+    currentUserLikedPosts : string[] = [];
     getAttr: string = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier';
     constructor(private userService : UserService, private router : Router){}
 
    async ngOnInit() {
     this.currentUserJWTDecoded = jwtDecode(getCookie('user-authenticator-token')!, {header : false})
     this.currentUserID = this.currentUserJWTDecoded[this.getAttr]
-    console.log(this.currentUserID)
         if(this.router.url === '/profile') {
             this.userProfile = await firstValueFrom(this.userService.getUserProfile())
             console.log(this.userProfile)
             this.userProfile.posts = this.userProfile.posts.filter(post => post.text !== null)
-
             this.userProfile.posts.forEach(post => {
                 post.timeDif = this.calculateTimeDiff(post.createdAt);
                 post.comments.forEach(comment => {
@@ -60,8 +61,13 @@ export class PostsComponent implements OnInit{
                     }
                 })
             })
-        }
+        //     this.userService.getAllPosts().subscribe(posts => {
+        //         this.postsSubject.next(posts);
+        //     })
+        //     console.log(this.postsSubject);
+        // }
     }
+}
 
     calculateTimeDiff(date : string) : string {
         let timediff = '';
@@ -113,24 +119,46 @@ export class PostsComponent implements OnInit{
     
     async handlePostLike(PostId : string) {
         if(!this.currentUserLikedPosts.includes(PostId)) {
-            const likeResponse = await firstValueFrom(this.userService.likePost(PostId));
-            this.currentUserLikedPosts.push(PostId);
+            try {
+                const likeResponse = await firstValueFrom(this.userService.likePost(PostId));
+                this.currentUserLikedPosts.push(PostId);
+            }
+            catch(error) {
+                Swal.fire('Error' , 'Something went wrong, please try again.' , 'error')
+            }
         }
+
         else {
-            const unlikeResponse = await firstValueFrom(this.userService.unlikePost(PostId));
-            this.currentUserLikedPosts = this.currentUserLikedPosts.filter(id => id !== PostId);
+            try {
+                const unlikeResponse = await firstValueFrom(this.userService.unlikePost(PostId));
+                this.currentUserLikedPosts = this.currentUserLikedPosts.filter(id => id !== PostId);
+            }
+            catch(error) {
+                Swal.fire('Error' ,'Something went wrong, please try again.' , 'error')
+            }
         }
+
         if(this.router.url === '/profile') {
-            this.userProfile = await firstValueFrom(this.userService.getUserProfile());
-            this.userProfile.posts.forEach(post => {
-                post.timeDif = this.calculateTimeDiff(post.createdAt);
-            })
+            try {
+                this.userProfile = await firstValueFrom(this.userService.getUserProfile());
+                this.userProfile.posts.forEach(post => {
+                    post.timeDif = this.calculateTimeDiff(post.createdAt);
+                })
+            }
+            catch (error) {
+                Swal.fire('Error' , 'Something went wrong, please try again.' , 'error')
+            }
         }
         else {
-            this.timelinePosts = (await firstValueFrom(this.userService.getAllPosts())).filter(post => post.text !== null);
-            this.timelinePosts.forEach(post => {
-                post.timeDif = this.calculateTimeDiff(post.createdAt);
-            })
+            try {
+                this.timelinePosts = (await firstValueFrom(this.userService.getAllPosts())).filter(post => post.text !== null);
+                this.timelinePosts.forEach(post => {
+                    post.timeDif = this.calculateTimeDiff(post.createdAt);
+                })
+            }
+            catch (error) {
+                Swal.fire('Error' , 'Something went wrong, please try again.' , 'error')
+            }
         }
     }
 }
